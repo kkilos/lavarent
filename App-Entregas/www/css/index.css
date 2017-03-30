@@ -1,0 +1,18 @@
+            #lat {
+                background-color: #FFFD63;
+                font-size: 2em;
+                font-weight: bold;
+                height: 40px;
+            }
+
+            #lon {
+                background-color: #C6FFFF;
+                font-size: 2em;
+                font-weight: bold;
+                height: 40px;
+            }
+
+            #map {
+                width: 99%;
+                height: 300px;
+            }

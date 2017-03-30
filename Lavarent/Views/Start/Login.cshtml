@@ -1,0 +1,58 @@
+﻿@model OurSDK.Models.LoginPageViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@section styles{
+
+}
+@section plugins{
+
+ @Scripts.Render("~/bundles/jquery-backstretch")   
+
+
+}
+
+
+@section scripts{
+    <script src="@Url.Content("~/ViewsScripts/Start/Login.js")"></script>
+}
+
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = " login-form" }))
+{
+    <h3 class="form-title">Acceso al Sistema</h3>
+    <div class="control-group">
+        <div class="controls">
+            <div class="input-icon left">
+                <i class="icon-user"></i>
+                @Html.TextBoxFor(x => x.Username, new { @class = "m-wrap form-control placeholder-no-fix valid", @tabindex = "1", @placeholder = "Usuario" })
+                @Html.ValidationMessageFor(x => x.Username)
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <div class="input-icon left">
+                <i class="icon-lock"></i>
+                @Html.PasswordFor(x => x.Password, new { @class = "m-wrap form-control placeholder-no-fix valid", @tabindex = "2", @placeholder = "Contraseña" })
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        @*<label class="checkbox">
+            <input type="checkbox" />
+            Remember me
+        </label>*@
+        <button tabindex="3" type="submit" name="login_btn" class="btn green pull-right" id="btnInciar">
+            Iniciar Sesión <i class="m-icon-swapright m-icon-white"></i>
+        </button>
+    </div>
+
+}
+
+

@@ -1,0 +1,602 @@
+﻿
+@{
+    ViewBag.Title = "MembresiasClientes";
+    Layout = "~/Views/Shared/LayoutBase.cshtml";
+}
+
+@section styles{
+    @*  @Styles.Render("~/Content/dataTables")*@
+    @Styles.Render("~/Content/summernote")
+    @Styles.Render("~/Content/bootstrap-fileinput")
+    @Styles.Render("~/Content/bootstrap-modal")
+
+    <link href="~/Content/Plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" />
+}
+@section plugins{
+    @Scripts.Render("~/bundles/dataTables")
+    @Scripts.Render("~/bundles/summernote")
+    @Scripts.Render("~/bundles/bootstrap-fileinput")
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyAhDGHfnIzRKDiauFPiC0zyt4CL8yM6WtI" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/gmaps")
+
+}
+@section scripts{
+    <script src="~/Scripts/Plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script src=@Url.Content("~/Scripts/Components-Plugins/gral_selector_simple_rol.js")></script>
+    <script src=@Url.Content("~/Scripts/Components-Plugins/tabla-generica-1.0.8.js")></script>
+    <script src=@Url.Content("~/ViewsScripts/MembresiasClientes/MembresiasClientes.1.0.2.js")></script>
+
+
+}
+
+<h1 class="page-title">Membresias de Clientes</h1>
+
+
+<div class="tabbable-custom ">
+    <ul class="nav nav-tabs  ">
+        <li class="active">
+            <a id="busqueda_cliente" href="#tab_5_1" data-toggle="tab" aria-expanded="true"> Búsqueda de cliente </a>
+        </li>
+        <li class="">
+            <a id="datos_membresia" class="ValidaCliente" href="#tab_5_2" data-toggle="tab" aria-expanded="false"> Datos de la membresia</a>
+        </li>
+        <li class="">
+            <a id="historial_rentas" href="#tab_5_3" class="ValidaCliente" data-toggle="tab" aria-expanded="false"> Historial de rentas </a>
+        </li>
+        <li class="">
+            <a id="ubicacion_actual" href="#tab_5_4" class="ValidaCliente" data-toggle="tab" aria-expanded="false"> Ubicación Actual (Mapa) </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_5_1">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="portlet box oficial blue-chambray">
+                        <div class="portlet-title">
+                            <div class="caption font-white">
+                                <h4>
+                                    <i class="icon-user-following font-white font-lg" style="padding-right:10px"></i>Listado de Membresias
+                                </h4>
+                            </div>
+                            <div class="actions"></div>
+                            <div class="tools"></div>
+                        </div>
+                        <div class="portlet-body">
+                            <table id="dtClientes" class="table table-striped table-bordered table-hover order-column"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_5_2" @*style="height:500px"*@>
+            <div class="row-fluid">
+                <div class="span12">
+                    @*  *@
+                    <div id="clnt-portlet_datos_generales" class="portlet portlet-fit full-height-content full-height-content-scrollable bordered box oficial blue-chambray">
+                        <div class="portlet-title">
+                            <div class="caption font-white">
+                                <h4>
+                                    <i class="icon-user-following font-white font-lg" style="padding-right:10px"></i>Datos del Cliente
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <div class="horizontal-form">
+                                <div class="full-height-content-body">
+                                    <div class="form-body">
+                                        <!--Información General -->
+                                        <div>
+                                            <h3 class="form-section">Información General</h3>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Número Cliente</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="icon-user font-yellow"></i>
+                                                            </span>
+                                                            <input id="clnt-id" type="text" class="form-control" placeholder="Nuevo Cliente" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Miembro desde</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="icon-calendar font-yellow"></i>
+                                                            </span>
+                                                            <input id="clnt-miembro_desde" type="text" class="form-control" placeholder="Nuevo Cliente" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                </div>
+                                                <div class="col-md-3">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Nombre completo</label>
+                                                        <input id="clnt-nombre_completo" type="text" class="form-control" placeholder="Nombre completo del Cliente">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Dirección</label>
+                                                        <input id="clnt-direccion" type="text" class="form-control" placeholder="Dirección del Cliente">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Datos de la Ubicación</label>
+                                                        <input id="clnt-ubicacion" type="text" class="form-control" placeholder="Datos de la Ubicación del Cliente">
+                                                    </div>
+                                                    <input id="clnt-latitud" type="hidden" />
+                                                    <input id="clnt-longitud" type="hidden" />
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <label>Colonia</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                <input id="clnt-colonia" type="text" class="form-control" placeholder="Colonia del Cliente" readonly>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <button id="btn-cambia-colonia" class="btn yellow"><i class="icon-home font-white" style="padding-right:10px"></i>Editar Colonia</button>
+                                                            </div>
+                                                            <input id="clnt-id_colonia" type="hidden" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Zona</label>
+                                                        <input id="clnt-zona" type="text" class="form-control" placeholder="Seleccione Colonia" readonly>
+                                                        <input id="clnt-id_zona" type="hidden" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Telefono Casa</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="icon-call-end font-blue"></i>
+                                                            </span>
+                                                            <input id="clnt-telefono_casa" type="text" class="form-control mascara_telefono" placeholder="Telefono Casa">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Telefono Celular</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="icon-call-end font-blue"></i>
+                                                            </span>
+                                                            <input id="clnt-telefono_celular" type="text" class="form-control mascara_telefono" placeholder="Telefono Celular">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Referencias-->
+                                        <div>
+                                            <h3 class="form-section">Referencias Personales</h3>
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                        <label>Nombre completo Referencia</label>
+                                                        <input id="clnt-ref1-nombre_completo" type="text" class="form-control" placeholder="Nombre completo de la Referencia">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Telefono Referencia</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="icon-call-end font-blue"></i>
+                                                            </span>
+                                                            <input id="clnt-ref1-tel" type="text" class="form-control mascara_telefono" placeholder="Telefono Referencia">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                        <label>Nombre completo Referencia</label>
+                                                        <input id="clnt-ref2-nombre_completo" type="text" class="form-control" placeholder="Nombre completo de la Referencia">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Telefono Referencia</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="icon-call-end font-blue"></i>
+                                                            </span>
+                                                            <input id="clnt-ref2-tel" type="text" class="form-control mascara_telefono" placeholder="Telefono Referencia">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Documentación-->
+                                        <div>
+                                            <h3 class="form-section">Documentación</h3>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <p>
+                                                            <label>Identificación con fotografía</label>
+                                                        </p>
+                                                        <div id="clnt-identificacion_fotografia-imagen" class="fileinput fileinput-new m-grid m-grid-full-height" data-provides="fileinput">
+                                                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%; height: 300px;">
+                                                                <img src="~/Content/img/imagen-no-disponible.jpg" />
+                                                            </div>
+                                                            <div>
+                                                                <span class="btn red btn-outline btn-file">
+                                                                    <span class="fileinput-new"> Select image </span>
+                                                                    <span class="fileinput-exists"> Change </span>
+                                                                    <input type="file" name="...">
+                                                                </span>
+                                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <p>
+                                                            <label>Comprobante de domicilio</label>
+                                                        </p>
+                                                        <div id="clnt-comprobante_domicilio-imagen" class="fileinput fileinput-new m-grid m-grid-full-height" data-provides="fileinput">
+                                                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%; height: 300px;">
+                                                                <img src="~/Content/img/imagen-no-disponible.jpg" />
+                                                            </div>
+                                                            <div>
+                                                                <span class="btn red btn-outline btn-file">
+                                                                    <span class="fileinput-new"> Select image </span>
+                                                                    <span class="fileinput-exists"> Change </span>
+                                                                    <input type="file" name="...">
+                                                                </span>
+                                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Calidad de Imagen Identificación con fotografía</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="icon-user font-yellow"></i>
+                                                            </span>
+                                                            <input id="clnt-identificacion_fotografia-calidad" type="text" class="form-control" placeholder="Nuevo Cliente" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <p>3.	Estatus: (con dato, sin dato,  ilegible)</p>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Fecha de Imagen Identificación con fotografía</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="icon-calendar font-yellow"></i>
+                                                            </span>
+                                                            <input id="clnt-identificacion_fotografia-fecha" type="text" class="form-control" placeholder="Nuevo Cliente" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Calidad de Imagen Comprobante de domicilio</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="icon-user font-yellow"></i>
+                                                        </span>
+                                                        <input id="clnt-comprobante_domicilio-calidad" type="text" class="form-control" placeholder="Nuevo Cliente" readonly>
+                                                    </div>
+                                                    <p>3.	Estatus: ( con dato, sin dato, ilegible, cambio domicilio)</p>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Fecha de Imagen Comprobante de domicilio</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="icon-calendar font-yellow"></i>
+                                                            </span>
+                                                            <input id="clnt-comprobante_domicilio-fecha" type="text" class="form-control" placeholder="Nuevo Cliente" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Observaciones -->
+                                        <h3 class="form-section">Observaciones</h3>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div id="clnt-observaciones"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button id="idBtnGuardaCliente" type="button" class="btn blue">Guardar</button>
+                                    <button id="idBtnCancelarCliente" type="button" class="btn default">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_5_3">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="portlet box oficial blue-chambray">
+                        <div class="portlet-title">
+                            <div class="caption font-white">
+                                <h4>
+                                    <i class="icon-user-following font-white font-lg" style="padding-right:10px"></i>Historial de Rentas
+                                </h4>
+                            </div>
+                            <div class="actions"></div>
+                            <div class="tools"></div>
+                        </div>
+                        <div class="portlet-body">
+                            <table class="table table-bordered table-striped table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            No. orden de renta
+                                        </th>
+                                        <th>
+                                            No. de Cliente
+                                        </th>
+                                        <th>
+                                            Nombre Repartidor
+                                        </th>
+                                        <th>
+                                            Estatus Renta
+                                        </th>
+                                        <th>
+                                            Fecha Inicio
+                                        </th>
+                                        <th>
+                                            Tarifa Estimada
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="dtHistorialRentas"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="tab-pane" id="tab_5_4">
+            <p>
+                <div id="clnt-ubicacion_mapa" class="gmaps"> </div>
+            </p> 
+        </div>
+    </div>
+</div>
+<div id="modal-cambia-colonia" class="modal" data-toggle="modal" tabindex="-1" style="top:0">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Colonias</h4>
+    </div>
+    <div class="modal-body">
+        <div class="search-page search-content-4">
+            <div class="search-bar bordered">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group">
+                            <input type="text" id="cln-txt-buscar-colonia" class="form-control" placeholder="Búsqueda de colonias ...">
+                            <span class="input-group-btn">
+                                <button id="cln-btn-buscar-colonia" class="btn green-soft uppercase bold" type="button">Buscar</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-table table-responsive">
+                <table class="table table-bordered table-striped table-condensed">
+                    <thead >
+                        <tr>
+                            <th>
+                               Colonia
+                            </th>
+                            <th>
+                               C.P.
+                            </th>
+                            <th>
+                                Zona
+                            </th>
+                            <th>
+                                Seleccionar
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="cln-tabla-colonias">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-outline dark">Cancel</button>
+    </div>
+</div>
+
+<div class="modal fade" id="full" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Modal Title</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                <button type="button" class="btn green">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+@*<div id="myModaModificar" class="modal container fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Modificar</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="id_cg_nombre_modificar" class="control-group">
+                                <label class="control-label" for="id_nombre_modificar">Nombre Completo</label>
+                                <div class="controls">
+                                    <input type="text" id="id_nombre_modificar" class="col-md-12" placeholder="Nombre completo" tabindex="1">
+                                    <span class="help-block">Nombre completo del usuario, empezando por nombre de pila</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <div class="row">
+                        <!--/span-->
+                        <div class="col-md-12">
+                            <div id="id_cg_rol_modificar" class="control-group">
+                                <label class="control-label" for="id_rol_modificar">Rol</label>
+                                <div class="controls">
+                                    <select id="id_rol_modificar" class="col-md-12 select2_category" data-placeholder="Choose a Category" tabindex="3"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="control-group">
+                                <label class="control-label" for="id_usuario_modificar">Usuario</label>
+                                <div class="controls">
+                                    <span id="id_usuario_modificar" class="text">usuario</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6 ">
+                            <div id="id_cg_contrasenia_modificar" class="control-group">
+                                <label class="control-label" for="id_contrasenia_modificar">Contraseña</label>
+                                <div class="controls">
+                                    <span>
+                                        <input type="password" id="id_contrasenia_modificar" class="m-wrap col-md-8" placeholder="Contraseña" tabindex="5">
+                                        <button id="id_ver_contrasenia" class="btn span3" tabindex="4">Ver</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="control-group">
+                                <label class="control-label" for="id_comentario_modificar">Comentarios</label>
+                                <div class="controls">
+                                    <input type="text" id="id_comentario_modificar" class="m-wrap col-md-12" placeholder="Comentario" tabindex="6">
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="control-group">
+                                <label class="control-label" for="id_usuario_creo">Usuario que dio Acceso</label>
+                                <div class="controls">
+                                    <span id="id_usuario_creo" class="text">usuario_creo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6 ">
+                            <div class="control-group">
+                                <label class="control-label" for="id_fechahora_creo">Fecha de creación</label>
+                                <div class="controls">
+                                    <span id="id_fechahora_creo" class="text">fh_creo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <input type="hidden" id="guid_usuario_modificar" />
+                </div>
+                <div class="modal-footer">
+                    <button id="id_btn_cancelar" class="btn" data-dismiss="modal" aria-hidden="true" tabindex="8">Cancelar</button>
+                    <button id="id_btn_modificar" class="btn green" tabindex="7">Modificar</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+<div id="myModalNuevo" class="modal" data-toggle="modal" tabindex="-1" style="top:0">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Nuevo Cliente</h4>
+            </div>
+            <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="input-group">
+                                    <label class="control-label" for="id_nombre_nuevo">Nombre Completo</label>
+                                    <div class="controls">
+                                        <input type="text" id="id_nombre_nuevo" class="m-wrap span12" placeholder="Nombre completo" tabindex="1">
+                                        <span class="help-block">Nombre completo del cliente, empezando por nombre de pila</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true" tabindex="8">Cancelar</button>
+                        <button id="btnNuevo" class="btn green" tabindex="7">Guardar</button>
+                    </div>
+                </div>
+            </div>
