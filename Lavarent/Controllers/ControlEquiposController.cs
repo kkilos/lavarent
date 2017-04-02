@@ -48,5 +48,17 @@ namespace Lavarent.Controllers
             oDB.Dispose();
             return result;
         }
+
+        [HttpPost]
+        public JsonResult ObtCatCapacidad(int id_tipo_equipo)
+        {
+            JsonResult result = new JsonResult();
+            claseDB oDB = new claseDB();
+            oDB.Procedure = "cteq_p_obt_cat_capacidad";
+            oDB.AddParameter("_id_tipo_equipo", id_tipo_equipo);
+            result = Json(oDB.ExecuteProcedureDataList());
+            oDB.Dispose();
+            return result;
+        }
     }
 }

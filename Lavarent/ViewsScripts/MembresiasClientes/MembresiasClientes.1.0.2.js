@@ -239,7 +239,7 @@
             }
         });
         $("#clnt-ubicacion_mapa").css("width", $(window).width()).css("height", $(window).height() - 300);
-        if ($("#clnt-latitud").val() == '' && $("#clnt-longitud").val() == ''){
+        if (($("#clnt-latitud").val() == '' && $("#clnt-longitud").val() == '') || ($("#clnt-latitud").val() == '0' && $("#clnt-longitud").val() == '0')) {
             GMaps.geocode({
             address: ($("#clnt-direccion").val().trim() + ", Hermosillo, Sonora"),
             callback: function (results, status) {

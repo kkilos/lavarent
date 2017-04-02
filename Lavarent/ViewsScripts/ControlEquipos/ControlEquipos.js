@@ -59,7 +59,30 @@
                         text: item.tipo_equipo
                     }));
                 });
+                $('#eqp-tipo_equipo').trigger("change");
             }
+        });
+        $('#eqp-tipo_equipo').on('change', function () {
+            $.ajax({
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                type: 'POST',
+                url: "../ControlEquipos/ObtCatCapacidad",
+                data: "{id_tipo_equipo:" + $(this).val() + "}",
+                success: function (oJson) {
+                    $('#eqp-capacidad').html('');
+                    $('#eqp-capacidad').append($('<option>', {
+                        value: 0,
+                        text: "Seleccione una capacidad"
+                    }));
+                    $.each(oJson, function (i, item) {
+                        $('#eqp-capacidad').append($('<option>', {
+                            value: item.id_capacidad,
+                            text: item.capacidad
+                        }));
+                    });
+                }
+            });
         });
 
 
