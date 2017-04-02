@@ -32,6 +32,8 @@
                 $('#eqp-id').val(value.id_equipo);
                 $("#eqp-fecha_compra").val(value.fecha_compra);
                 $("#eqp-tipo_equipo").val(value.id_tipo_equipo);
+                $('#eqp-tipo_equipo').trigger("change");
+                $("#eqp-capacidad").val(value.id_capacidad);
                 if (value.observaciones != '') {
                     $('#eqp-observaciones').summernote('editor.pasteHTML', value.observaciones);
                     console.log($('#eqp-observaciones').summernote('code'));
@@ -43,6 +45,7 @@
     });
 
     var cargaCatalogos = function () {
+
         $.ajax({
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
@@ -59,9 +62,11 @@
                         text: item.tipo_equipo
                     }));
                 });
-                $('#eqp-tipo_equipo').trigger("change");
             }
         });
+
+
+
         $('#eqp-tipo_equipo').on('change', function () {
             $.ajax({
                 dataType: 'json',
