@@ -629,7 +629,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="ViewsScripts\ControlEquipos\Equipos.js" />
+    <Content Include="ViewsScripts\ControlEquipos\ControlEquipos.js" />
     <Content Include="ViewsScripts\MembresiasClientes\Index.old.js" />
     <Content Include="ViewsScripts\MembresiasClientes\Index.1.0.3.js" />
     <Content Include="ViewsScripts\MembresiasClientes\MembresiasClientes.1.0.2.js" />
@@ -661,7 +661,6 @@
     <Content Include="Content\Plugins\bootstrap-summernote\font\summernote.eot" />
     <Content Include="Content\Plugins\bootstrap-summernote\font\summernote.ttf" />
     <Content Include="Content\Plugins\bootstrap-summernote\font\summernote.woff" />
-    <Content Include="Views\ControlEquipos\Equipos.cshtml" />
     <Content Include="Views\ControlEquipos\ControlEquipos.cshtml" />
   </ItemGroup>
   <ItemGroup>

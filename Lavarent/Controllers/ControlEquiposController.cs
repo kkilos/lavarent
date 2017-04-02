@@ -24,5 +24,29 @@ namespace Lavarent.Controllers
             oDB.Dispose();
             return result;
         }
+
+        [HttpPost]
+        public JsonResult ObtEquipo(string id_equipo)
+        {
+            JsonResult result = new JsonResult();
+            claseDB oDB = new claseDB();
+            oDB.Procedure = "cteq_p_obt_equipo";
+            oDB.AddParameter("_id_equipo", id_equipo);
+            result = Json(oDB.ExecuteProcedureDataList());
+            oDB.Dispose();
+            return result;
+        }
+
+
+        [HttpPost]
+        public JsonResult ObtCatTipoEquipos()
+        {
+            JsonResult result = new JsonResult();
+            claseDB oDB = new claseDB();
+            oDB.Procedure = "cteq_p_obt_cat_tipos_equipos";
+            result = Json(oDB.ExecuteProcedureDataList());
+            oDB.Dispose();
+            return result;
+        }
     }
 }
