@@ -1,0 +1,513 @@
+﻿
+@{
+    ViewBag.Title = "OrdenesRentas";
+    Layout = "~/Views/Shared/LayoutBase.cshtml";
+}
+
+
+
+@section styles{
+    @*  @Styles.Render("~/Content/dataTables")*@
+    @Styles.Render("~/Content/summernote")
+    @Styles.Render("~/Content/bootstrap-fileinput")
+    @Styles.Render("~/Content/bootstrap-modal")
+
+    <link href="~/Content/Plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" />
+<link href="~/Content/Pages/css/todo-2.min.css" rel="stylesheet" />
+}
+@section plugins{
+    @Scripts.Render("~/bundles/dataTables")
+    @Scripts.Render("~/bundles/summernote")
+    @Scripts.Render("~/bundles/bootstrap-fileinput")
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyAhDGHfnIzRKDiauFPiC0zyt4CL8yM6WtI" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/gmaps")
+
+}
+@section scripts{
+    <script src="~/Scripts/Plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script src=@Url.Content("~/Scripts/Components-Plugins/gral_selector_simple_rol.js")></script>
+    <script src=@Url.Content("~/Scripts/Components-Plugins/tabla-generica-1.0.8.js")></script>
+    <script src=@Url.Content("~/ViewsScripts/MembresiasClientes/MembresiasClientes.1.0.2.js")></script>
+
+}
+
+<h2>OrdenesRentas</h2>
+
+
+<div class="m-grid m-grid-demo">
+    <div class="m-grid-row">
+                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default"><i class="fa fa-calendar"></i> Lunes 10 <br />de Abril</div>
+                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-yellow font-white bold uppercase"><i class="fa fa-calendar"></i> Martes 11<br /> de Abril</div>
+                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default"><i class="fa fa-calendar"></i> Miercoles 12<br /> de Abril</div>
+                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default"><i class="fa fa-calendar"></i> Jueves 13 de<br /> Abril</div>
+                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default"><i class="fa fa-calendar"></i> Viernes 14<br /> de Abril</div>
+                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default"><i class="fa fa-calendar"></i> Sabado 15<br /> de Abril</div>
+            </div>
+        </div>
+
+
+<div class="todo-content">
+    <div class="portlet light ">
+        <!-- PROJECT HEAD -->
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-bar-chart font-green-sharp hide"></i>
+                <span class="caption-helper">GlobalEx Tasks:</span> &nbsp;
+                <span class="caption-subject font-green-sharp bold uppercase">Tune Website</span>
+            </div>
+            <div class="actions">
+                <div class="btn-group">
+                    <a class="btn green btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        MANAGE
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="javascript:;"> New Task </a>
+                        </li>
+                        <li class="divider"> </li>
+                        <li>
+                            <a href="javascript:;">
+                                Pending
+                                <span class="badge badge-danger"> 4 </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                Completed
+                                <span class="badge badge-success"> 12 </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                Overdue
+                                <span class="badge badge-warning"> 9 </span>
+                            </a>
+                        </li>
+                        <li class="divider"> </li>
+                        <li>
+                            <a href="javascript:;"> Delete Project </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end PROJECT HEAD -->
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-3 col-sm-2">
+                    <div class="todo-tasklist">
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar4.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-item-text"> Lorem dolor sit amet ipsum dolor sit consectetuer dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 08:00 AM
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Urgent</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-red">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore dolor sit amet. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 09:00 AM
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 10 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-blue">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Contact Us Map Location changes </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum amet, consectetuer dolore dolor sit amet. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 04 Oct 2014
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                                <span class="todo-tasklist-badge badge badge-roundless">Test</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-purple">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar7.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Projects list new Forms </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 19 Dec 2014
+                                </span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-yellow">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar8.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> New Search Keywords </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer sit amet ipsum dolor, consectetuer ipsum consectetuer sit amet dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 02 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 10 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-red">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 14 Sep 2014
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-blue">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Contact Us Improvement </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum amet, psum dolor sit consectetuer dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 21 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                                <span class="todo-tasklist-badge badge badge-roundless">Primary</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo-tasklist-devider"> </div>
+                <div class="col-md-3 col-sm-2">
+                    <div class="todo-tasklist">
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar4.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-item-text"> Lorem dolor sit amet ipsum dolor sit consectetuer dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 07:00 AM
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Urgent</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-red">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore dolor sit amet. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 14 Sep 2014
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 10 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-blue">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Contact Us Map Location changes </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum amet, consectetuer dolore dolor sit amet. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 04 Oct 2014
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                                <span class="todo-tasklist-badge badge badge-roundless">Test</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-purple">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar7.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Projects list new Forms </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 19 Dec 2014
+                                </span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-yellow">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar8.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> New Search Keywords </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer sit amet ipsum dolor, consectetuer ipsum consectetuer sit amet dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 02 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 10 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-red">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 14 Sep 2014
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-blue">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Contact Us Improvement </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum amet, psum dolor sit consectetuer dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 21 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                                <span class="todo-tasklist-badge badge badge-roundless">Primary</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo-tasklist-devider"> </div>
+                <div class="col-md-3 col-sm-2">
+                    <div class="todo-tasklist">
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar4.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-item-text"> Lorem dolor sit amet ipsum dolor sit consectetuer dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 07:00 AM
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Urgent</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-red">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore dolor sit amet. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 14 Sep 2014
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 10 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-blue">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Contact Us Map Location changes </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum amet, consectetuer dolore dolor sit amet. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 04 Oct 2014
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                                <span class="todo-tasklist-badge badge badge-roundless">Test</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-purple">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar7.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Projects list new Forms </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 19 Dec 2014
+                                </span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-yellow">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar8.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> New Search Keywords </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer sit amet ipsum dolor, consectetuer ipsum consectetuer sit amet dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 02 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 10 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-red">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 14 Sep 2014
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-blue">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Contact Us Improvement </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum amet, psum dolor sit consectetuer dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 21 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                                <span class="todo-tasklist-badge badge badge-roundless">Primary</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo-tasklist-devider"> </div>
+                <div class="col-md-3 col-sm-2">
+                    <div class="todo-tasklist">
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar4.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-item-text"> Lorem dolor sit amet ipsum dolor sit consectetuer dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 07:00 AM
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Urgent</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-red">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore dolor sit amet. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 14 Sep 2014
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 10 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-blue">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Contact Us Map Location changes </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum amet, consectetuer dolore dolor sit amet. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 04 Oct 2014
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                                <span class="todo-tasklist-badge badge badge-roundless">Test</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-purple">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar7.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Projects list new Forms </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 19 Dec 2014
+                                </span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-yellow">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar8.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> New Search Keywords </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer sit amet ipsum dolor, consectetuer ipsum consectetuer sit amet dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 02 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 10 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-red">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 14 Sep 2014
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>
+                            </div>
+                        </div>
+                        <div class="todo-tasklist-item todo-tasklist-item-border-blue">
+                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
+                            <div class="todo-tasklist-item-title"> Contact Us Improvement </div>
+                            <div class="todo-tasklist-item-text"> Lorem ipsum amet, psum dolor sit consectetuer dolore. </div>
+                            <div class="todo-tasklist-controls pull-left">
+                                <span class="todo-tasklist-date">
+                                    <i class="icon-clock"></i> 21 Feb 2015
+                                </span>
+                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                                <span class="todo-tasklist-badge badge badge-roundless">Primary</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

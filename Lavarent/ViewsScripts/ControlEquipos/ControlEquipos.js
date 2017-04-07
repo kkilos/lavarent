@@ -34,6 +34,8 @@
                 $("#eqp-tipo_equipo").val(value.id_tipo_equipo);
                 $('#eqp-tipo_equipo').trigger("change");
                 $("#eqp-capacidad").val(value.id_capacidad);
+
+
                 if (value.observaciones != '') {
                     $('#eqp-observaciones').summernote('editor.pasteHTML', value.observaciones);
                     console.log($('#eqp-observaciones').summernote('code'));

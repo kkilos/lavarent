@@ -14,5 +14,10 @@ namespace Lavarent.Controllers
         {
             return View();
         }
+
+        public ActionResult OrdenesRentas()
+        {
+            return View();
+        }
     }
 }
