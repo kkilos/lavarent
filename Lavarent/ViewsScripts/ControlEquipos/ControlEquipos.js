@@ -97,4 +97,19 @@
 
     cargaCatalogos();
 
+    $(".ValidaEquipo").on('click', function () {
+        if ($('#eqp-id').val() == '') {
+            swal({
+                title: "Mensaje de advertencia",
+                text: "Es necesario seleccionar un equipo o agrega uno nuevo",
+                type: "warning",
+                allowOutsideClick: "true",
+                confirmButtonClass: "btn-warning"
+            },
+            function (isConfirm) {
+                $("#busqueda_equipo").trigger("click");
+            });
+        }
+    });
+
 });

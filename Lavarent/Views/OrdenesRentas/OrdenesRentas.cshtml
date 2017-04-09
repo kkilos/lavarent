@@ -13,7 +13,7 @@
     @Styles.Render("~/Content/bootstrap-modal")
 
     <link href="~/Content/Plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" />
-<link href="~/Content/Pages/css/todo-2.min.css" rel="stylesheet" />
+    <link href="~/Content/Pages/css/todo-2.min.css" rel="stylesheet" />
 }
 @section plugins{
     @Scripts.Render("~/bundles/dataTables")
@@ -31,29 +31,48 @@
 
 }
 
-<h2>OrdenesRentas</h2>
 
+<div class="page-title"><h1>Ordenes de Rentas</h1></div>
 
-<div class="m-grid m-grid-demo">
-    <div class="m-grid-row">
-                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default"><i class="fa fa-calendar"></i> Lunes 10 <br />de Abril</div>
-                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-yellow font-white bold uppercase"><i class="fa fa-calendar"></i> Martes 11<br /> de Abril</div>
-                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default"><i class="fa fa-calendar"></i> Miercoles 12<br /> de Abril</div>
-                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default"><i class="fa fa-calendar"></i> Jueves 13 de<br /> Abril</div>
-                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default"><i class="fa fa-calendar"></i> Viernes 14<br /> de Abril</div>
-                <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default"><i class="fa fa-calendar"></i> Sabado 15<br /> de Abril</div>
+<div class="row">
+    <div class="m-grid m-grid-demo">
+        <div class="m-grid-row">
+            <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default">
+                <i class="fa fa-calendar"></i> Lunes 10
+                <br />de Abril
+            </div>
+            <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-yellow font-white bold uppercase">
+                <i class="fa fa-calendar"></i> Martes 11
+                <br /> de Abril
+            </div>
+            <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default">
+                <i class="fa fa-calendar"></i> Miercoles 12
+                <br /> de Abril
+            </div>
+            <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default">
+                <i class="fa fa-calendar"></i> Jueves 13 de
+                <br /> Abril
+            </div>
+            <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default">
+                <i class="fa fa-calendar"></i> Viernes 14
+                <br /> de Abril
+            </div>
+            <div class="m-grid-col m-grid-col-middle m-grid-col-center m-grid-col-md-2 color-view bg-default">
+                <i class="fa fa-calendar"></i> Sabado 15
+                <br /> de Abril
             </div>
         </div>
+    </div>
+</div>
 
 
 <div class="todo-content">
     <div class="portlet light ">
         <!-- PROJECT HEAD -->
         <div class="portlet-title">
+          
             <div class="caption">
-                <i class="icon-bar-chart font-green-sharp hide"></i>
-                <span class="caption-helper">GlobalEx Tasks:</span> &nbsp;
-                <span class="caption-subject font-green-sharp bold uppercase">Tune Website</span>
+                
             </div>
             <div class="actions">
                 <div class="btn-group">
@@ -94,108 +113,281 @@
         </div>
         <!-- end PROJECT HEAD -->
         <div class="portlet-body">
+            
+            <hr />
+
             <div class="row">
                 <div class="col-md-3 col-sm-2">
-                    <div class="todo-tasklist">
-                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
-                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar4.jpg" width="27px" height="27px">
-                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
-                            <div class="todo-tasklist-item-text"> Lorem dolor sit amet ipsum dolor sit consectetuer dolore. </div>
-                            <div class="todo-tasklist-controls pull-left">
-                                <span class="todo-tasklist-date">
-                                    <i class="icon-clock"></i> 08:00 AM
-                                </span>
-                                <span class="todo-tasklist-badge badge badge-roundless">Urgent</span>
+
+                    <div class="mt-element-list">
+                        <div class="mt-list-head list-news ext-1 font-white bg-grey-gallery">
+                            <div class="list-head-title-container">
+                                <h3 class="list-title">News List</h3>
                             </div>
+                            <div class="list-count pull-right bg-red">2</div>
                         </div>
-                        <div class="todo-tasklist-item todo-tasklist-item-border-red">
-                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
-                            <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
-                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore dolor sit amet. </div>
-                            <div class="todo-tasklist-controls pull-left">
-                                <span class="todo-tasklist-date">
-                                    <i class="icon-clock"></i> 09:00 AM
-                                </span>
-                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>
-                            </div>
-                        </div>
-                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
-                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
-                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
-                            <div class="todo-tasklist-controls pull-left">
-                                <span class="todo-tasklist-date">
-                                    <i class="icon-clock"></i> 10 Feb 2015
-                                </span>
-                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
-                            </div>
-                        </div>
-                        <div class="todo-tasklist-item todo-tasklist-item-border-blue">
-                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
-                            <div class="todo-tasklist-item-title"> Contact Us Map Location changes </div>
-                            <div class="todo-tasklist-item-text"> Lorem ipsum amet, consectetuer dolore dolor sit amet. </div>
-                            <div class="todo-tasklist-controls pull-left">
-                                <span class="todo-tasklist-date">
-                                    <i class="icon-clock"></i> 04 Oct 2014
-                                </span>
-                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
-                                <span class="todo-tasklist-badge badge badge-roundless">Test</span>
-                            </div>
-                        </div>
-                        <div class="todo-tasklist-item todo-tasklist-item-border-purple">
-                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar7.jpg" width="27px" height="27px">
-                            <div class="todo-tasklist-item-title"> Projects list new Forms </div>
-                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
-                            <div class="todo-tasklist-controls pull-left">
-                                <span class="todo-tasklist-date">
-                                    <i class="icon-clock"></i> 19 Dec 2014
-                                </span>
-                            </div>
-                        </div>
-                        <div class="todo-tasklist-item todo-tasklist-item-border-yellow">
-                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar8.jpg" width="27px" height="27px">
-                            <div class="todo-tasklist-item-title"> New Search Keywords </div>
-                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer sit amet ipsum dolor, consectetuer ipsum consectetuer sit amet dolore. </div>
-                            <div class="todo-tasklist-controls pull-left">
-                                <span class="todo-tasklist-date">
-                                    <i class="icon-clock"></i> 02 Feb 2015
-                                </span>
-                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
-                            </div>
-                        </div>
-                        <div class="todo-tasklist-item todo-tasklist-item-border-green">
-                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
-                            <div class="todo-tasklist-item-title"> Slider Redesign </div>
-                            <div class="todo-tasklist-controls pull-left">
-                                <span class="todo-tasklist-date">
-                                    <i class="icon-clock"></i> 10 Feb 2015
-                                </span>
-                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
-                            </div>
-                        </div>
-                        <div class="todo-tasklist-item todo-tasklist-item-border-red">
-                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
-                            <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
-                            <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
-                            <div class="todo-tasklist-controls pull-left">
-                                <span class="todo-tasklist-date">
-                                    <i class="icon-clock"></i> 14 Sep 2014
-                                </span>
-                                <span class="todo-tasklist-badge badge badge-roundless">Important</span>
-                            </div>
-                        </div>
-                        <div class="todo-tasklist-item todo-tasklist-item-border-blue">
-                            <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
-                            <div class="todo-tasklist-item-title"> Contact Us Improvement </div>
-                            <div class="todo-tasklist-item-text"> Lorem ipsum amet, psum dolor sit consectetuer dolore. </div>
-                            <div class="todo-tasklist-controls pull-left">
-                                <span class="todo-tasklist-date">
-                                    <i class="icon-clock"></i> 21 Feb 2015
-                                </span>
-                                <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
-                                <span class="todo-tasklist-badge badge badge-roundless">Primary</span>
-                            </div>
+                        <div class="mt-list-container list-news ext-1">
+                            <ul>
+                                <li class="mt-list-item">
+                                    <div class="list-icon-container">
+                                        <a href="javascript:;">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="list-thumb">
+                                        <a href="javascript:;">
+                                            <img alt="" src="../assets/global/img/portfolio/600x600/12.jpg" />
+                                        </a>
+                                    </div>
+                                    <div class="list-datetime bold uppercase font-red"> 8 Nov, 2015 </div>
+                                    <div class="list-item-content">
+                                        <h3 class="uppercase">
+                                            <a href="javascript:;">Latest news on Metronic</a>
+                                        </h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum gravida mauris, a tincidunt dolor porttitor eu. </p>
+                                    </div>
+                                </li>
+                                <li class="mt-list-item">
+                                    <div class="list-icon-container">
+                                        <a href="javascript:;">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="list-thumb">
+                                        <a href="javascript:;">
+                                            <img alt="" src="../assets/global/img/portfolio/600x600/10.jpg" />
+                                        </a>
+                                    </div>
+                                    <div class="list-datetime bold uppercase font-red"> 8 Nov, 2015 </div>
+                                    <div class="list-item-content">
+                                        <h3 class="uppercase">
+                                            <a href="javascript:;">Latest news on Metronic</a>
+                                        </h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum gravida mauris, a tincidunt dolor porttitor eu. </p>
+                                    </div>
+                                </li>
+                                <li class="mt-list-item">
+                                    <div class="list-icon-container">
+                                        <a href="javascript:;">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="list-thumb">
+                                        <a href="javascript:;">
+                                            <img alt="" src="../assets/global/img/portfolio/600x600/08.jpg" />
+                                        </a>
+                                    </div>
+                                    <div class="list-datetime bold uppercase font-dark"> 8 Nov, 2015 </div>
+                                    <div class="list-item-content">
+                                        <h3 class="uppercase">
+                                            <a href="javascript:;">Latest news on Metronic</a>
+                                        </h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum gravida mauris, a tincidunt dolor porttitor eu. </p>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
+                </div>
+                    <div class="mt-element-list">
+                        <div class="mt-list-head list-news ext-1 font-white bg-grey-gallery">
+                            <div class="list-head-title-container">
+                                <h3 class="list-title">Unidad de Reparto</h3>
+                            </div>
+                            <div class="list-count pull-right bg-red caption-subject bold uppercase">#1</div>
+                        </div>
+                        <div class="mt-list-container list-news ext-1">
+                            <ul>
+                                <li class="mt-list-item">
+                                    <div class="list-icon-container">
+                                        <a href="javascript:;">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="list-datetime bold uppercase font-green">
+                                        <i class="icon-clock"></i>08:00 AM
+                                    </div>
+                                    <div class="list-item-content">
+                                        <h3 class="uppercase">
+                                            <a href="javascript:;">Latest news on Metronic</a>
+                                        </h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum gravida mauris, a tincidunt dolor porttitor eu. </p>
+                                    </div>
+                                </li>
+
+                                <li class="mt-list-item">
+                                    <div class="list-icon-container">
+                                        <a href="javascript:;">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="list-thumb">
+                                        <span aria-hidden="true" class="icon-clock" style=" font-size 22px;"></span>
+                                        entregado listo mas texto
+                                        @*<div class="simplelineicons-demo">
+                                            <div class="item-box">
+                                                <span class="item">
+
+                                                </span>
+                                            </div>
+
+
+                                        </div>*@
+                                        
+                                    </div>
+                                    <div class="list-datetime bold uppercase font-red">
+                                        <i class="icon-clock"></i>08:00 AM
+                                    </div>
+                                    <div class="list-item-content">
+                                        <h3 class="uppercase">
+                                            <a href="javascript:;">Latest news on Metronic</a>
+                                        </h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum gravida mauris, a tincidunt dolor porttitor eu. </p>
+                                    </div>
+                                </li>
+                                <li class="mt-list-item">
+                                    <div class="list-icon-container">
+                                        <a href="javascript:;">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="list-thumb">
+                                        <a href="javascript:;">
+                                            <img alt="" src="../assets/global/img/portfolio/600x600/10.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="list-datetime bold uppercase font-red"> 8 Nov, 2015 </div>
+                                    <div class="list-item-content">
+                                        <h3 class="uppercase">
+                                            <a href="javascript:;">Latest news on Metronic</a>
+                                        </h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum gravida mauris, a tincidunt dolor porttitor eu. </p>
+                                    </div>
+                                </li>
+                                <li class="mt-list-item">
+                                    <div class="list-icon-container">
+                                        <a href="javascript:;">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="list-thumb">
+                                        <a href="javascript:;">
+                                            <img alt="" src="../assets/global/img/portfolio/600x600/08.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="list-datetime bold uppercase font-dark"> 8 Nov, 2015 </div>
+                                    <div class="list-item-content">
+                                        <h3 class="uppercase">
+                                            <a href="javascript:;">Latest news on Metronic</a>
+                                        </h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum gravida mauris, a tincidunt dolor porttitor eu. </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    @*<div class="todo-tasklist">
+                            <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                                <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar4.jpg" width="27px" height="27px">
+                                <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                                <div class="todo-tasklist-item-text"> Lorem dolor sit amet ipsum dolor sit consectetuer dolore. </div>
+                                <div class="todo-tasklist-controls pull-left">
+                                    <span class="todo-tasklist-date">
+                                        <i class="icon-clock"></i> 08:00 AM
+                                    </span>
+                                    <span class="todo-tasklist-badge badge badge-roundless">Urgent</span>
+                                </div>
+                            </div>
+                            <div class="todo-tasklist-item todo-tasklist-item-border-red">
+                                <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
+                                <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
+                                <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore dolor sit amet. </div>
+                                <div class="todo-tasklist-controls pull-left">
+                                    <span class="todo-tasklist-date">
+                                        <i class="icon-clock"></i> 09:00 AM
+                                    </span>
+                                    <span class="todo-tasklist-badge badge badge-roundless">Important</span>
+                                </div>
+                            </div>
+                            <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                                <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
+                                <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                                <div class="todo-tasklist-controls pull-left">
+                                    <span class="todo-tasklist-date">
+                                        <i class="icon-clock"></i> 10 Feb 2015
+                                    </span>
+                                    <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
+                                </div>
+                            </div>
+                            <div class="todo-tasklist-item todo-tasklist-item-border-blue">
+                                <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
+                                <div class="todo-tasklist-item-title"> Contact Us Map Location changes </div>
+                                <div class="todo-tasklist-item-text"> Lorem ipsum amet, consectetuer dolore dolor sit amet. </div>
+                                <div class="todo-tasklist-controls pull-left">
+                                    <span class="todo-tasklist-date">
+                                        <i class="icon-clock"></i> 04 Oct 2014
+                                    </span>
+                                    <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                                    <span class="todo-tasklist-badge badge badge-roundless">Test</span>
+                                </div>
+                            </div>
+                            <div class="todo-tasklist-item todo-tasklist-item-border-purple">
+                                <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar7.jpg" width="27px" height="27px">
+                                <div class="todo-tasklist-item-title"> Projects list new Forms </div>
+                                <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
+                                <div class="todo-tasklist-controls pull-left">
+                                    <span class="todo-tasklist-date">
+                                        <i class="icon-clock"></i> 19 Dec 2014
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="todo-tasklist-item todo-tasklist-item-border-yellow">
+                                <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar8.jpg" width="27px" height="27px">
+                                <div class="todo-tasklist-item-title"> New Search Keywords </div>
+                                <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer sit amet ipsum dolor, consectetuer ipsum consectetuer sit amet dolore. </div>
+                                <div class="todo-tasklist-controls pull-left">
+                                    <span class="todo-tasklist-date">
+                                        <i class="icon-clock"></i> 02 Feb 2015
+                                    </span>
+                                    <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                                </div>
+                            </div>
+                            <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                                <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar9.jpg" width="27px" height="27px">
+                                <div class="todo-tasklist-item-title"> Slider Redesign </div>
+                                <div class="todo-tasklist-controls pull-left">
+                                    <span class="todo-tasklist-date">
+                                        <i class="icon-clock"></i> 10 Feb 2015
+                                    </span>
+                                    <span class="todo-tasklist-badge badge badge-roundless">Important</span>&nbsp;
+                                </div>
+                            </div>
+                            <div class="todo-tasklist-item todo-tasklist-item-border-red">
+                                <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar5.jpg" width="27px" height="27px">
+                                <div class="todo-tasklist-item-title"> Homepage Alignments to adjust </div>
+                                <div class="todo-tasklist-item-text"> Lorem ipsum dolor sit amet, consectetuer dolore psum dolor sit. </div>
+                                <div class="todo-tasklist-controls pull-left">
+                                    <span class="todo-tasklist-date">
+                                        <i class="icon-clock"></i> 14 Sep 2014
+                                    </span>
+                                    <span class="todo-tasklist-badge badge badge-roundless">Important</span>
+                                </div>
+                            </div>
+                            <div class="todo-tasklist-item todo-tasklist-item-border-blue">
+                                <img class="todo-userpic pull-left" src="../assets/pages/media/users/avatar6.jpg" width="27px" height="27px">
+                                <div class="todo-tasklist-item-title"> Contact Us Improvement </div>
+                                <div class="todo-tasklist-item-text"> Lorem ipsum amet, psum dolor sit consectetuer dolore. </div>
+                                <div class="todo-tasklist-controls pull-left">
+                                    <span class="todo-tasklist-date">
+                                        <i class="icon-clock"></i> 21 Feb 2015
+                                    </span>
+                                    <span class="todo-tasklist-badge badge badge-roundless">Postponed</span>&nbsp;
+                                    <span class="todo-tasklist-badge badge badge-roundless">Primary</span>
+                                </div>
+                            </div>
+                        </div>*@
                 </div>
                 <div class="todo-tasklist-devider"> </div>
                 <div class="col-md-3 col-sm-2">
