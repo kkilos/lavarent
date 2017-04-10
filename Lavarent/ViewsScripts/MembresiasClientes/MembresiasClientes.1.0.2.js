@@ -167,12 +167,10 @@
             success: function (oJson) {
                 $("#dtHistorialRentas").html('');
                 $.each(oJson, function (i, value) {
-                   // value.id_renta,
-
                     $("#dtHistorialRentas").append('<tr>' +
                     '<td>' + value.no_orden_renta + '</td>' +
                     '<td>' + value.id_cliente + '</td>' +
-                    '<td>' + value.nombre_completo_repartidor + '</td>' +
+                    '<td>' + value.repartidores + '</td>' +
                     '<td>' + value.estatus_renta + '</td>' +
                     '<td>' + value.fecha_inicio + '</td>' +
                     '<td>' + value.tarifa_estimada + '</td>' +
