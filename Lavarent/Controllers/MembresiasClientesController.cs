@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
+using System.Data;
 
 namespace Lavarent.Controllers
 {
@@ -123,6 +124,7 @@ namespace Lavarent.Controllers
             string referencia_1_telefono,
             string referencia_2_nombre,
             string referencia_2_telefono,
+            int identificacion_id_estatus_imagen,
             string observaciones)
         {
             JsonResult result = new JsonResult();
@@ -146,6 +148,7 @@ namespace Lavarent.Controllers
             oDB.AddParameter("_referencia_1_telefono", referencia_1_telefono);
             oDB.AddParameter("_referencia_2_nombre", referencia_2_nombre);
             oDB.AddParameter("_referencia_2_telefono", referencia_2_telefono);
+            oDB.AddParameter("_identificacion_id_estatus_imagen", identificacion_id_estatus_imagen);
             oDB.AddParameter("_observaciones", observaciones);
             oDB.ExecuteProcedureNonQuery();
             result = Json(r);
@@ -153,10 +156,68 @@ namespace Lavarent.Controllers
             return result;
         }
         [HttpPost]
-        public async Task<JsonResult> ActIdentificacionCliente(string id_cliente)
+        public async Task<JsonResult> ActClienteIdentificacion(string id_cliente, int identificacion_id_estatus_imagen)
         {
-            //try
-            //{
+            try
+            {
+                foreach (string file in Request.Files)
+            {
+                HttpPostedFileBase hpf = Request.Files[file] as HttpPostedFileBase;
+                    if (hpf.ContentLength == 0)
+                        continue;
+                    int fileSizeInBytes = hpf.ContentLength;
+                    MemoryStream target = new MemoryStream( );
+                    hpf.InputStream.CopyTo(target);
+                    byte[] dataImagen = target.ToArray();
+                    claseDB oDB = new claseDB();
+                    oDB.Procedure = "mbrs_p_act_cliente_identificacion";
+                    oDB.AddParameter("_id_cliente", id_cliente);
+                    oDB.AddParameter("_identificacion_content_type", hpf.ContentType.ToString());
+                    oDB.AddParameter("_identificacion_id_estatus_imagen", identificacion_id_estatus_imagen);  
+                    oDB.AddParameter("_identificacion_imagen", dataImagen);
+                    oDB.ExecuteProcedureNonQuery();
+                    oDB.Dispose();
+            }
+
+            }
+            catch (Exception)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Upload failed");
+            }
+            return Json("File uploaded successfully");
+        }
+
+        [HttpGet]
+        public FileResult ObtClienteIdentificacion(string id_cliente)
+        {
+
+            DataRow row;
+            byte[] dataImagen = null;
+            string ContentType = string.Empty;
+            claseDB oDB = new claseDB();
+            oDB.Procedure = "mrbs_p_obt_cliente_identificacion";
+            oDB.AddParameter("_id_cliente", id_cliente);
+            row = oDB.ExecuteProcedureDataRow();
+            oDB.Dispose();
+            if(!DBNull.Value.Equals(row["identificacion_imagen"]))
+            {
+                ContentType = row["identificacion_content_type"].ToString();
+                dataImagen = (byte[]) row["identificacion_imagen"];
+            }
+            else
+            {
+                return File(Server.MapPath("~") + "\\Content\\img\\imagen-no-disponible.jpg", "image/jpg");
+            } 
+            return File(dataImagen, ContentType);
+        }
+
+
+        [HttpPost]
+        public async Task<JsonResult> ActClienteComprobante(string id_cliente, int comprobante_id_estatus_imagen)
+        {
+            try
+            {
                 foreach (string file in Request.Files)
                 {
                     HttpPostedFileBase hpf = Request.Files[file] as HttpPostedFileBase;
@@ -167,44 +228,59 @@ namespace Lavarent.Controllers
                     hpf.InputStream.CopyTo(target);
                     byte[] dataImagen = target.ToArray();
                     claseDB oDB = new claseDB();
-                    oDB.Procedure = "mbrs_p_act_cliente_credencial";
+                    oDB.Procedure = "mbrs_p_act_cliente_comprobante";
                     oDB.AddParameter("_id_cliente", id_cliente);
-                    oDB.AddParameter("_identificacion_imagen", dataImagen);
+                    oDB.AddParameter("_comprobante_content_type", hpf.ContentType.ToString());
+                    oDB.AddParameter("_comprobante_id_estatus_imagen", comprobante_id_estatus_imagen);
+                    oDB.AddParameter("_comprobante_imagen", dataImagen);
                     oDB.ExecuteProcedureNonQuery();
                     oDB.Dispose();
-
                 }
 
-            //}
-            //catch (Exception)
-            //{
-            //    Response.StatusCode = (int)HttpStatusCode.BadRequest;
-            //    return Json("Upload failed");
-            //}
-
+            }
+            catch (Exception)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Upload failed");
+            }
             return Json("File uploaded successfully");
         }
 
+        [HttpGet]
+        public FileResult ObtClienteComprobante(string id_cliente)
+        {
 
-        //public void LoadImages()
-        //{
-        //    claseDB oDB = new claseDB();
-        //    string image = txtLogo.Text;
-        //    byte[] ImageData;
-        //    FileStream fs = new FileStream(image, FileMode.Open, FileAccess.Read);
-        //    BinaryReader br = new BinaryReader(fs);
-        //    ImageData = br.ReadBytes((int)fs.Length);
-        //    br.Close();
-        //    fs.Close();
+            DataRow row;
+            byte[] dataImagen = null;
+            string ContentType = string.Empty;
+            claseDB oDB = new claseDB();
+            oDB.Procedure = "mrbs_p_obt_cliente_comprobante";
+            oDB.AddParameter("_id_cliente", id_cliente);
+            row = oDB.ExecuteProcedureDataRow();
+            oDB.Dispose();
+            if (!DBNull.Value.Equals(row["comprobante_imagen"]))
+            {
+                ContentType = row["comprobante_content_type"].ToString();
+                dataImagen = (byte[])row["comprobante_imagen"];
+            }
+            else
+            {
+                return File(Server.MapPath("~") + "\\Content\\img\\imagen-no-disponible.jpg", "image/jpg");
+            }
+            return File(dataImagen, ContentType);
+        }
 
-        //    oDB.AddParameter("_imagen")
-        //    MySqlCommand cmd = new MySqlCommand("insert into Fn_Pictures(Images,Email)values(@Images,'" + txtEmailId.Text + "')", cn);
-        //    cmd.Parameters.AddWithValue("@Images", MySqlDbType.LongBlob).Value = ImageData;
-        //    cmd.ExecuteNonQuery();
-        //    cn.Close();
-        //}
 
-
+        [HttpPost]
+        public JsonResult ObtTipoEquipo()
+        {
+            JsonResult result = new JsonResult();
+            claseDB oDB = new claseDB();
+            oDB.Procedure = "cteq_p_obt_cat_tipos_equipos";
+            result = Json(oDB.ExecuteProcedureDataList());
+            oDB.Dispose();
+            return result;
+        }
 
     }
 }

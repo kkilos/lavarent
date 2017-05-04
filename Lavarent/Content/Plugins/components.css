@@ -5686,7 +5686,7 @@ Form Layouts
 ****/
 /* Static info */
 .static-info {
-  margin-bottom: 10px; }
+  margin-bottom: 0px; }
   .static-info .name {
     font-size: 14px; }
   .static-info .value {

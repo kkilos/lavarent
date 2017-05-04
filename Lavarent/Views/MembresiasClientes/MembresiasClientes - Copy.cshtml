@@ -5,33 +5,33 @@
 }
 
 @section styles{
-    @*  @Styles.Render("~/Content/dataTables")*@
+       @*  @Styles.Render("~/Content/dataTables")*@
     @Styles.Render("~/Content/bootstrap-wysihtml5")
+
     @Styles.Render("~/Content/bootstrap-fileinput")
     @Styles.Render("~/Content/bootstrap-modal")
     @Styles.Render("~/Content/bootstrap-datepicker")    
     <link href="~/Content/Pages/css/todo-2.min.css" rel="stylesheet" />
     <link href="~/Content/Plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" />
-    <style>
-        .static-info {
-            margin-bottom: 0px; 
-        }
-    </style>
+    @*
+<link href="~/Content/Plugins/bootstrap-switch/bootstrap-switch.min.css" rel="stylesheet" />*@
 }
 @section plugins{
     @Scripts.Render("~/bundles/dataTables")
-    @Scripts.Render("~/bundles/bootstrap-wysihtml5")
+    @*@Scripts.Render("~/bundles/summernote")*@
+@Scripts.Render("~/bundles/bootstrap-wysihtml5")
     @Scripts.Render("~/bundles/bootstrap-fileinput")
     @Scripts.Render("~/bundles/bootstrap-datepicker")
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyAhDGHfnIzRKDiauFPiC0zyt4CL8yM6WtI" type="text/javascript"></script>
     @Scripts.Render("~/bundles/gmaps")
-    <script src=@Url.Content("~/Scripts/Plugins/jquery-inputmask/jquery.inputmask.bundle.min.js")></script>
+
 }
-@section scripts{    
-    <script src=@Url.Content("~/Scripts/Components-Plugins/cteq_selector_tipo_equipos.js")></script>
+@section scripts{
+    <script src="~/Scripts/Plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script src=@Url.Content("~/Scripts/Components-Plugins/gral_selector_simple_rol.js")></script>
     <script src=@Url.Content("~/Scripts/Components-Plugins/tabla-generica-1.0.8.js")></script>
     <script src=@Url.Content("~/Scripts/Components-Plugins/week_timeline-1.0.0.js")></script>
-    <script src=@Url.Content("~/Scripts/Components-Plugins/todo_rentas_nueva.js")></script>
+    <script src=@Url.Content("~/Scripts/Components-Plugins/todo_rentas.js")></script>
     <script src=@Url.Content("~/ViewsScripts/MembresiasClientes/MembresiasClientes.1.0.2.js")></script>
 }
 
@@ -253,20 +253,20 @@
                                                     <div class="form-group">
                                                         <p>
                                                             <label>Identificación con fotografía</label>
-                                                        </p>                                                        
+                                                        </p>
+                                                        <input id="clnt-identificacion" type="file" />
                                                         <div id="clnt-identificacion_fotografia-imagen" class="fileinput fileinput-new m-grid m-grid-full-height" data-provides="fileinput">
                                                             <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%; height: 300px;">
-                                                                <img id="clnt-identificacion_imagen" src="~/Content/img/imagen-no-disponible.jpg" />
+                                                                <img src="~/Content/img/imagen-no-disponible.jpg" />
                                                             </div>
                                                             <div>
                                                                 <span class="btn red btn-outline btn-file">
-                                                                    <span class="fileinput-new clnt-identificacion_guardar"> Selecciona imagen </span>
-                                                                    <span class="fileinput-exists clnt-identificacion_guardar" > Cambia imagen </span>
-                                                                    <input id="clnt-identificacion" type="file" name="clnt-identificacion">
+                                                                    <span class="fileinput-new"> Select image </span>
+                                                                    <span class="fileinput-exists"> Change </span>
+                                                                    <input type="file" name="...">
                                                                 </span>
-                                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Quitar </a>
-                                                                @*<button id="idBtnGuardaIdentificacion" type="button" class="btn blue">Subir</button>*@
-                                                             </div>
+                                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -278,18 +278,16 @@
                                                         </p>
                                                         <div id="clnt-comprobante_domicilio-imagen" class="fileinput fileinput-new m-grid m-grid-full-height" data-provides="fileinput">
                                                             <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%; height: 300px;">
-                                                                <img id="clnt-comprobante_imagen" src="~/Content/img/imagen-no-disponible.jpg" />
+                                                                <img src="~/Content/img/imagen-no-disponible.jpg" />
                                                             </div>
                                                             <div>
                                                                 <span class="btn red btn-outline btn-file">
-                                                                    <span  class="fileinput-new clnt-comprobante_guardar"> Selecciona imagen </span>
-                                                                    <span  class="fileinput-exists clnt-comprobante_guardar"> Cambia imagen </span>
-                                                                    <input id="clnt-comprobante" type="file" name="clnt-comprobante">
+                                                                    <span class="fileinput-new"> Select image </span>
+                                                                    <span class="fileinput-exists"> Change </span>
+                                                                    <input type="file" name="...">
                                                                 </span>
-                                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Quitar </a>
-                                                                @*<button id="idBtnGuardaComprobante" type="button" class="btn blue">Subir</button>*@
+                                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                                             </div>
-                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -303,14 +301,10 @@
                                                             <span class="input-group-addon">
                                                                 <i class="icon-user font-yellow"></i>
                                                             </span>
-                                                            <select id="clnt-identificacion_fotografia-calidad" type="text" class="form-control" >
-                                                                <option value="0">Sin identificación con fotografía</option>
-                                                                <option value="1">Con identificación con fotografía</option>
-                                                                <option value="2">Ilegible</option>
-                                                                <option value="3">Domicilio distinto</option>
-                                                            </select>
+                                                            <input id="clnt-identificacion_fotografia-calidad" type="text" class="form-control" placeholder="Nuevo Cliente" readonly>
                                                         </div>
                                                     </div>
+                                                    <p>3.	Estatus: (con dato, sin dato,  ilegible)</p>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
@@ -319,7 +313,7 @@
                                                             <span class="input-group-addon">
                                                                 <i class="icon-calendar font-yellow"></i>
                                                             </span>
-                                                            <input id="clnt-identificacion_fotografia-fecha" type="text" class="form-control" placeholder="Sin identificación con fotografía" readonly>
+                                                            <input id="clnt-identificacion_fotografia-fecha" type="text" class="form-control" placeholder="Nuevo Cliente" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -329,13 +323,9 @@
                                                         <span class="input-group-addon">
                                                             <i class="icon-user font-yellow"></i>
                                                         </span>
-                                                        <select id="clnt-comprobante_domicilio-calidad" type="text" class="form-control">
-                                                            <option value="0">Sin Comprobante de Domicilio</option>
-                                                            <option value="1">Con Comprobante de Domicilio</option>
-                                                            <option value="2">Ilegible</option>
-                                                            <option value="3">Domicilio distinto</option>
-                                                        </select>
+                                                        <input id="clnt-comprobante_domicilio-calidad" type="text" class="form-control" placeholder="Nuevo Cliente" readonly>
                                                     </div>
+                                                    <p>3.	Estatus: ( con dato, sin dato, ilegible, cambio domicilio)</p>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
@@ -344,7 +334,7 @@
                                                             <span class="input-group-addon">
                                                                 <i class="icon-calendar font-yellow"></i>
                                                             </span>
-                                                            <input id="clnt-comprobante_domicilio-fecha" type="text" class="form-control" placeholder="Sin Comprobante de Domicilio" readonly>
+                                                            <input id="clnt-comprobante_domicilio-fecha" type="text" class="form-control" placeholder="Nuevo Cliente" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -354,12 +344,15 @@
                                         <h3 class="form-section">Observaciones</h3>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <textarea id="clnt-observaciones" class="wysihtml5 form-control" rows="6"></textarea>
+                                                @*<div id="clnt-observaciones"></div>*@
+
+                                                <textarea class="wysihtml5 form-control" rows="6"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-actions">
+                                    <button id="subir" type="button" class="btn blue">subir</button>
                                     <button id="idBtnGuardaCliente" type="button" class="btn blue">Guardar</button>
                                     <button id="idBtnCancelarCliente" type="button" class="btn default">Cancelar</button>
                                 </div>
@@ -380,8 +373,7 @@
                 <!-- PROJECT HEAD -->
                 <div class="portlet-title">
                     <div class="caption">
-                        <b>Nueva Renta</b>
-                        
+                        <b>Nueva Renta</b><input type="checkbox" class="make-switch" checked data-on-color="success" data-off-color="danger" data-on-text="Disponible" data-off-text="Ocupado">
                     </div>
                     <div class="actions">
                         <div id="DatePickerSeleccionDias"></div>
@@ -494,74 +486,52 @@
     </div>
 </div>
 
-<div id="myModalNuevo" class="modal" data-toggle="modal" tabindex="-1" style="top:0">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title">Nuevo Cliente</h4>
+<div class="modal fade" id="full" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Modal Title</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                <button type="button" class="btn green">Save changes</button>
+            </div>
         </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="input-group">
-                        <label class="control-label" for="id_nombre_nuevo">Nombre Completo</label>
-                        <div class="controls">
-                            <input type="text" id="id_nombre_nuevo" class="form-control" placeholder="Nombre completo" tabindex="1">
-                            <span class="help-block">Nombre completo del cliente, empezando por nombre de pila</span>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
+<div id="myModalNuevo" class="modal" data-toggle="modal" tabindex="-1" style="top:0">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Nuevo Cliente</h4>
+            </div>
+            <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="input-group">
+                                    <label class="control-label" for="id_nombre_nuevo">Nombre Completo</label>
+                                    <div class="controls">
+                                        <input type="text" id="id_nombre_nuevo" class="m-wrap span12" placeholder="Nombre completo" tabindex="1">
+                                        <span class="help-block">Nombre completo del cliente, empezando por nombre de pila</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
                         </div>
                     </div>
-                </div>
-                <!--/span-->
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true" tabindex="8">Cancelar</button>
-            <button id="btnNuevo" class="btn green" tabindex="7">Guardar</button>
-        </div>
-    </div>
-</div>
-
-
-<div id="ModalNuevaRenta" class="modal" tabindex="-1" style="top:0">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title">Nueva Renta</h4>
-        </div>
-
-        <div class="modal-body">
-
-
-            <div class="row">
-                <div class="col-md-12">
-                    <label>Tipo de equipos:</label>
-                    <select id="tipoEquipos" tabindex="1">
-                    </select>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true" tabindex="8">Cancelar</button>
+                        <button id="btnNuevo" class="btn green" tabindex="7">Guardar</button>
+                    </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <label>Número de Semanas a rentar:</label>
-                    <input type="number" id="id_numero_semanas" min="0" max="100" placeholder="0" tabindex="2">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <label>Número de Equipos a rentar:</label>
-                    <input type="number" id="id_numero_equipos" min="0" max="100" placeholder="0" tabindex="3">
-                    <label id="id_maximo_numero_equipos">Equipos disponibles</label>
-                </div>
-            </div>
-            
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true" tabindex="8">Cancelar</button>
-            <button id="btnNuevaRenta" class="btn green" tabindex="7">Guardar</button>
-        </div>
-    </div>
-</div>
-
-
-

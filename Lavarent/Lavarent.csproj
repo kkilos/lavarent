@@ -128,6 +128,7 @@
     <Compile Include="Controllers\MembresiasClientesController.cs" />
     <Compile Include="Controllers\OrdenesRentasController.cs" />
     <Compile Include="Controllers\StartController.cs" />
+    <Compile Include="Controllers\SweetController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Filters\LogonAuthorize.cs" />
     <Compile Include="Global.asax.cs">
@@ -385,10 +386,22 @@
     <Content Include="Content\Pages\img\logo-big.png" />
     <Content Include="Content\Pages\img\logo-invert.png" />
     <Content Include="Content\Pages\img\logo.png" />
+    <Content Include="Content\Plugins\bootstrap-datepicker\bootstrap-datepicker.css" />
+    <Content Include="Content\Plugins\bootstrap-datepicker\bootstrap-datepicker.min.css" />
+    <Content Include="Content\Plugins\bootstrap-datepicker\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\Plugins\bootstrap-datepicker\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\Plugins\bootstrap-datepicker\bootstrap-datepicker3.css" />
+    <Content Include="Content\Plugins\bootstrap-datepicker\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\Plugins\bootstrap-datepicker\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\Plugins\bootstrap-datepicker\bootstrap-datepicker3.standalone.min.css" />
     <Content Include="Content\Plugins\bootstrap-fileinput\bootstrap-fileinput.css" />
     <Content Include="Content\Plugins\bootstrap-modal\bootstrap-modal-bs3patch.css" />
     <Content Include="Content\Plugins\bootstrap-modal\bootstrap-modal.css" />
+    <Content Include="Content\Plugins\bootstrap-sweetalert\sweetalert.min.css" />
     <Content Include="Content\Plugins\bootstrap-sweetalert\sweetalert.css" />
+    <Content Include="Content\Plugins\bootstrap-switch\bootstrap.switch.min.css" />
+    <Content Include="Content\Plugins\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="Content\Plugins\bootstrap-wysihtml5\wysiwyg-color.css" />
     <Content Include="Content\Plugins\components-md.css" />
     <Content Include="Content\Plugins\components-md.min.css" />
     <Content Include="Content\Plugins\components-rounded.css" />
@@ -437,6 +450,10 @@
     <Content Include="Content\Shared\img\slide1-1.jpg" />
     <Content Include="Content\Shared\img\slide1-2.jpg" />
     <Content Include="Content\Shared\img\slide1-3.jpg" />
+    <Content Include="Content\sweetalert\bootstrap-sweetalert.png" />
+    <Content Include="Content\sweetalert\docs.css" />
+    <Content Include="Content\sweetalert\sweet-alert.css" />
+    <Content Include="Content\sweetalert\thumbs-up.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -473,14 +490,23 @@
     <Content Include="Content\DataTables\extensions\RowReorder\css\semanticui.scss" />
     <Content Include="Content\DataTables\extensions\Buttons\css\mixins.scss" />
     <Content Include="Content\DataTables\extensions\Buttons\css\common.scss" />
+    <Content Include="Content\sweetalert\sweet-alert.less" />
+    <Content Include="Content\sweetalert\sweet-alert-combine.less" />
+    <Content Include="Content\sweetalert\sweet-alert-animations.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Scripts\Components-Plugins\cteq_selector_tipo_equipos.js" />
     <Content Include="Scripts\Components-Plugins\gral_menu_accesos-1.0.js" />
     <Content Include="Scripts\Components-Plugins\gral_selector_simple_rol.js" />
     <Content Include="Scripts\Components-Plugins\tabla-generica-1.0.8.js" />
+    <Content Include="Scripts\Components-Plugins\todo_rentas_nueva.js" />
+    <Content Include="Scripts\Components-Plugins\todo_rentas.js" />
     <Content Include="Scripts\Components-Plugins\usrs_tablas_usuarios-1.0.2.js" />
+    <Content Include="Scripts\Components-Plugins\week_timeline-1.0.0.js" />
     <Content Include="Scripts\DataTables\extensions\AutoFill\js\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\extensions\AutoFill\js\autoFill.bootstrap.min.js" />
     <Content Include="Scripts\DataTables\extensions\AutoFill\js\autoFill.bootstrap4.js" />
@@ -592,8 +618,15 @@
     <Content Include="Scripts\Metronic\layout.js" />
     <Content Include="Scripts\Metronic\layout.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.es-ES.js" />
+    <Content Include="Scripts\Plugins\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="Scripts\Plugins\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="Scripts\Plugins\bootstrap-datepicker\moment.min.js" />
     <Content Include="Scripts\Plugins\backstretch\jquery.backstretch.js" />
     <Content Include="Scripts\Plugins\backstretch\jquery.backstretch.min.js" />
+    <Content Include="Scripts\Plugins\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Scripts\Plugins\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\Plugins\bootstrap-datepicker\locales\bootstrap-datepicker.es.min.js" />
     <Content Include="Scripts\Plugins\bootstrap-fileinput\bootstrap-fileinput.js" />
     <Content Include="Scripts\Plugins\bootstrap-modal\bootstrap-modal.js" />
     <Content Include="Scripts\Plugins\bootstrap-modal\bootstrap-modalmanager.js" />
@@ -638,6 +671,8 @@
     <Content Include="ViewsScripts\MembresiasClientes\Index.1.0.3.js" />
     <Content Include="ViewsScripts\MembresiasClientes\MembresiasClientes.1.0.2.js" />
     <Content Include="ViewsScripts\OrdenesRentas\Index.js" />
+    <Content Include="ViewsScripts\OrdenesRentas\OrdenesRentas.1.0.0 - Copy.js" />
+    <Content Include="ViewsScripts\OrdenesRentas\OrdenesRentas.1.0.0.js" />
     <Content Include="ViewsScripts\Start\Login.js" />
     <Content Include="ViewsScripts\Usuarios\Index.1.0.3.js" />
     <Content Include="Web.config" />
@@ -668,6 +703,9 @@
     <Content Include="Views\ControlEquipos\ControlEquipos.cshtml" />
     <Content Include="Views\OrdenesRentas\OrdenesRenta.cshtml" />
     <Content Include="Views\OrdenesRentas\OrdenesRentas.cshtml" />
+    <Content Include="Views\OrdenesRentas\OrdenesRentas - Copy.cshtml" />
+    <Content Include="Views\Sweet\Alert.cshtml" />
+    <Content Include="Views\MembresiasClientes\MembresiasClientes - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

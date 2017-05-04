@@ -56,6 +56,9 @@ namespace Lavarent
             bundles.Add(new ScriptBundle("~/bundles/bootstrap-fileinput").Include(
             "~/Scripts/Plugins/bootstrap-fileinput/bootstrap-fileinput.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap-datepicker").Include(
+            "~/Scripts/Plugins/bootstrap-datepicker/moment.min.js",
+            "~/Scripts/Plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/dataTables").Include(
             //"~/Scripts/Plugins/datatables/datatables.min.js",
@@ -79,9 +82,14 @@ namespace Lavarent
 
             ));
             bundles.Add(new ScriptBundle("~/bundles/summernote").Include(
-            "~/Scripts/Plugins/bootstrap-summernote/summernote.min.js"
+                "~/Scripts/Plugins/bootstrap-summernote/summernote.min.js"
             ));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap-wysihtml5").Include(
+                "~/Scripts/Plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js",
+                "~/Scripts/Plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js",                
+                "~/Scripts/Plugins/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.es-ES.js"
+            ));
 
             bundles.Add(new ScriptBundle("~/bundles/gmaps").Include(
             "~/Scripts/Plugins/gmaps/gmaps.min.js"));
@@ -91,11 +99,11 @@ namespace Lavarent
 
             bundles.Add(new StyleBundle("~/Content/css-base-1").Include(
                       "~/Content/Plugins/font-awesome/css/font-awesome.css",
-                      "~/Content/Plugins/simple-line-icons/css/simple-line-icons.css",
+                      "~/Content/Plugins/simple-line-icons/css/simple-line-icons.css",                      
                       "~/Content/Plugins/bootstrap/css/bootstrap.css",
-                      "~/Content/Pluigns/bootstrap-switch/bootstrap-switch.min.css",
-                      "~/Content/Pluigns/bootstrap-sweetalert/sweetalert.css"
-            ));
+                      "~/Content/sweetalert/sweet-alert.css",
+                      "~/Content/Plugins/bootstrap-switch/bootstrap.switch.min.css"
+             ));
             bundles.Add(new StyleBundle("~/Content/css-base-2").Include(
                       "~/Content/Plugins/components.css",
                       "~/Content/Plugins/plugins.min.css"
@@ -105,12 +113,22 @@ namespace Lavarent
                       "~/Content/Metronic/layout/css/themes/grey.min.css",
                       "~/Content/Metronic/layout/css/custom.min.css"
             ));
+            bundles.Add(new StyleBundle("~/Content/defacto").Include(
+                        "~/Content/Pluigns/bootstrap-sweetalert/sweetalert.css",
+                      "~/Content/Pluigns/bootstrap-switch/bootstrap-switch.css"         
+            ));
 
 
             bundles.Add(new StyleBundle("~/Content/dataTables").Include(
                       "~/Content/Plugins/dataTables/datatables.min.css",
                       "~/Content/Plugins/dataTables/datatables.bootstrap.css"
             ));
+            bundles.Add(new StyleBundle("~/Content/bootstrap-wysihtml5").Include(
+                "~/Content/Plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css",
+                "~/Content/Plugins/bootstrap-wysihtml5/wysiwyg-color.css"
+            ));
+
+
             bundles.Add(new StyleBundle("~/Content/summernote").Include(
                 "~/Content/Plugins/bootstrap-summernote/summernote.css"
             ));
@@ -123,6 +141,9 @@ namespace Lavarent
 
             bundles.Add(new StyleBundle("~/Content/bootstrap-fileinput").Include(
             "~/Content/Plugins/bootstrap-fileinput/bootstrap-fileinput.css"));
+
+            bundles.Add(new StyleBundle("~/Content/bootstrap-datepicker").Include(
+            "~/Content/Plugins/bootstrap-datepicker/bootstrap-datepicker.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/login").Include(
                     "~/Content/Pages/css/login.css"));
