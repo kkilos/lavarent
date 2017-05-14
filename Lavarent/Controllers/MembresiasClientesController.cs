@@ -12,8 +12,7 @@ using System.Data;
 
 namespace Lavarent.Controllers
 {
-    // [Authorize]
-    [AllowAnonymous]
+    [Authorize]
     public class MembresiasClientesController : Controller
     {
         public ActionResult Index()
@@ -27,22 +26,6 @@ namespace Lavarent.Controllers
             return View();
         }
 
-        //public ActionResult ImagenComprobante(int id)
-        //{
-        //    byte[] cover = GetImageFromDataBase(id);
-        //    if (cover != null)
-        //    {
-        //        return File(cover, "image/jpg");
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
-        //private bool ThumbnailCallback()
-        //{
-        //    return true;
-        //}
 
         //private Image ObtVistaMiniatura(Image image)
         //{
@@ -84,6 +67,20 @@ namespace Lavarent.Controllers
             oDB.Dispose();
             return result;
         }
+
+        [HttpPost]
+        public JsonResult ActClienteNuevo(string nombre_completo)
+        {
+            JsonResult result = new JsonResult();
+            claseDB oDB = new claseDB();
+            oDB.Procedure = "mbrs_p_act_cliente_nuevo";
+            oDB.AddParameter("_nombre_completo", nombre_completo);
+            result = Json(oDB.ExecuteProcedureDataList());
+            oDB.Dispose();
+            return result;
+        }
+
+        
 
         [HttpPost]
         public JsonResult ObtColonias(string colonia)
@@ -280,6 +277,26 @@ namespace Lavarent.Controllers
             result = Json(oDB.ExecuteProcedureDataList());
             oDB.Dispose();
             return result;
+        }
+
+        [HttpPost]
+        public JsonResult ActCitaInstalacion(int id_cliente,
+            int id_tipo_equipo,
+            int numero_semanas,
+            int  id_repartidor,
+            DateTime fecha_hora)
+        {
+            JsonResult result = new JsonResult();
+            claseDB oDB = new claseDB();
+            oDB.Procedure = "mbrs_p_act_cita_instalacion_renta";
+            oDB.AddParameter("_id_cliente", id_cliente);
+            oDB.AddParameter("_id_tipo_equipo", id_tipo_equipo);
+            oDB.AddParameter("_numero_semanas", numero_semanas);
+            oDB.AddParameter("_id_repartidor", id_repartidor);
+            oDB.AddParameter("_fecha_hora", fecha_hora);            
+            oDB.ExecuteProcedureNonQuery();
+            oDB.Dispose();
+            return Json("exitosa");
         }
 
     }

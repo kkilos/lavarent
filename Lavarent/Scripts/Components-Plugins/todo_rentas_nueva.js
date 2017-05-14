@@ -3,11 +3,13 @@
     $.fn.todo_rentas = function (opciones) {
 
         var configuracionDefacto = {
+            fechahoraSeleccionada:'',
             fechaSeleccionada: '',
             idListaRepartidor1: 'listaRepartidor1',
             idCantidadListaRepartidor1: 'cantListaRepartidor1',
             idListaRepartidor2: 'listaRepartidor2',
-            idCantidadListaRepartidor2: 'cantListaRepartidor2'
+            idCantidadListaRepartidor2: 'cantListaRepartidor2',
+            repartidorSeleccionado: 1
         };
 
         var opciones = $.extend(configuracionDefacto, opciones);
@@ -49,7 +51,7 @@
                        // htmlTxt += '<div class="list-icon-container"><a href="javascript:;"><i class="fa fa-angle-right"></i></a></div>';
                         htmlTxt += '<div class="list-datetime bold uppercase font-green"><i class="icon-clock"></i> ' + value.horario ;
                         htmlTxt += '<div class="row pull-right">';
-                        htmlTxt += '<input type="checkbox" data-id="' + value.id_renta + '" data-size="mini" class="make-switch diponibilidadRenta" data-on-color="success" data-off-color="danger" data-on-text="Disponible" data-off-text="Ocupado"';
+                        htmlTxt += '<input type="checkbox" data-id="' + value.id_renta + '" data-id_repartidor="' + value.id_repartidor +'" data-hora_inicio="' + value.hora_inicio + '" data-size="mini" class="make-switch diponibilidadRenta" data-on-color="success" data-off-color="danger" data-on-text="Disponible" data-off-text="Ocupado"';
                         if (value.estatus_renta == 'Disponible') {                            
                             htmlTxt += 'checked>';
                         } else {
@@ -154,9 +156,11 @@
                     
                 }
             });
-
+            
             $(".diponibilidadRenta").on("switchChange.bootstrapSwitch", function (event, state) {
-
+                opciones.fechahoraSeleccionada = opciones.fechaSeleccionada + " " + $(this).attr("data-hora_inicio");
+                opciones.repartidorSeleccionado = $(this).attr("data-id_repartidor");
+                
                 if (!state) {
                     setTimeout(function () {
                         $("#tipoEquipos").cteq_selector_tipo_equipo({
@@ -190,7 +194,9 @@
 
         };
 
-        var fnPrivateBuscaEquiposDisponibles = function (id_tipo_equipo, tipo_equipo) {
+        var fnPrivateBuscaEquiposDisponibles = function (id_tipo_equipo, numero_semanas) {
+
+
             $("#id_numero_equipos").attr("max", 0);
             $("#id_maximo_numero_equipos").text("Máximo:" + 0 + " Equipos disponibles");
             $.ajax({
@@ -200,17 +206,43 @@
                 async: false,
                 url: '../OrdenesRentas/ObtEquiposDisponibles',
                 data: '{fecha_propuesta:"' + opciones.fechaSeleccionada + '",' +
-                'numero_de_semnas_propuesta:"' + $("#id_numero_semanas").val() + '",' +
+                'numero_de_semnas_propuesta:"' + numero_semanas + '",' +
                 'id_tipo_equipo:"' + id_tipo_equipo + '"}',
                 success: function (oJson) {
                     $.each(oJson, function (i, value) {
                         $("#id_numero_equipos").attr("max", value.numero_de_equipos_disponibles);
                         $("#id_maximo_numero_equipos").text("Máximo:" + value.numero_de_equipos_disponibles + " Equipos disponibles");
-                        console.log("Máximo:" + value.numero_de_equipos_disponibles + " Equipos disponibles");
+                       
                     });
                 }
             });
         };
+
+        $("#btnNuevaCitaInstalacion").on("click", function () {
+
+
+            if ($('#id_numero_equipos').val() > 0) {
+            $.ajax({
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                type: 'POST',
+                url: '../MembresiasClientes/ActCitaInstalacion',
+                data: '{ "id_cliente":"' + $('#clnt-id').val() + '",' +
+                'id_tipo_equipo:"' + $("#tipoEquipos").val() + '",' +
+                'numero_semanas:"' + $("#id_numero_semanas").val() + '",' +
+                'id_repartidor:"' + opciones.repartidorSeleccionado + '",' +
+                'fecha_hora:"' + opciones.fechahoraSeleccionada + '"}',
+                success: function (oJson) {
+                    $("#ModalNuevaRenta").modal("hide");
+                }
+            });
+            }
+
+
+            
+        });
+
+
 
         $("#id_numero_semanas").on("keyup change click", function () {
             fnPrivateBuscaEquiposDisponibles($("#tipoEquipos").val(),$("#id_numero_semanas").val());

@@ -38,8 +38,8 @@
                         <ul class="nav navbar-nav pull-right">
                             <li class="dropdown dropdown-user">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <img alt="" class="img-circle" src="../Content/img/avatarJESS.jpg"  />
-                                    <span class="username username-hide-on-mobile"> jvega </span>
+                                    <img alt="" class="img-circle" src="../Content/img/Yoda_Attack_of_the_Clones.jpg"  />
+                                    <span class="username username-hide-on-mobile"> carlos </span>
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
@@ -86,7 +86,7 @@
             <div class="page-container">
                 <div class="page-sidebar-wrapper">
                     <div class="page-sidebar navbar-collapse collapse">
-                        <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+                        <ul id="sidebar-menu" class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
                             <li class="sidebar-toggler-wrapper hide">
                                 <div class="sidebar-toggler">
                                     <span></span>
@@ -107,35 +107,7 @@
                                     </div>
                                 </form>
                             </li>
-                            @*<li class="nav-item start ">
-        <a href="javascript:;" class="nav-link nav-toggle">
-            <i class="icon-home"></i>
-            <span class="title">Dashboard</span>
-            <span class="arrow"></span>
-        </a>
-        <ul class="sub-menu">
-            <li class="nav-item start ">
-                <a href="index.html" class="nav-link ">
-                    <i class="icon-bar-chart"></i>
-                    <span class="title">Dashboard 1</span>
-                </a>
-            </li>
-            <li class="nav-item start ">
-                <a href="dashboard_2.html" class="nav-link ">
-                    <i class="icon-bulb"></i>
-                    <span class="title">Dashboard 2</span>
-                    <span class="badge badge-success">1</span>
-                </a>
-            </li>
-            <li class="nav-item start ">
-                <a href="dashboard_3.html" class="nav-link ">
-                    <i class="icon-graph"></i>
-                    <span class="title">Dashboard 3</span>
-                    <span class="badge badge-danger">5</span>
-                </a>
-            </li>
-        </ul>
-    </li>*@
+           
                             <li class="heading">
                                 <h3 class="uppercase">Caracteristicas</h3>
                             </li>
@@ -146,65 +118,6 @@
                                     <span class="title">Inicio</span>                                    
                                 </a>
                             </li>
-                            <li class="nav-item  ">
-                                <a href="/ControlEquipos/ControlEquipos" class="nav-link ">
-                                    <i class="fa fa-dashboard"></i>
-                                    <span class="title">Control de Equipos</span>
-                                    <span class="badge badge-danger">1</span>
-                                </a>
-                            </li>
-                            <li class="nav-item  ">
-                                <a href="/MembresiasClientes/MembresiasClientes" class="nav-link ">
-                                    <i class="fa fa-users"></i>
-                                    <span class="title">Memberesia de Clientes</span>
-                                    <span class="badge badge-success">500</span>
-                                </a>
-                            </li>
-                            <li class="nav-item  ">
-                                <a href="/OrdenesRentas/OrdenesRentas" class="nav-link ">
-                                    <i class="fa fa-truck"></i>
-                                    <span class="title">Ordenes de Renta</span>
-                                    <span class="badge badge-danger">5</span>
-                                </a>
-                            </li>
-                            @*<li class="nav-item  ">
-        <a href="index.html" class="nav-link ">
-            <i class="icon-basket"></i>
-            <span class="title">Ordenes de Renta</span>
-            <span class="badge badge-danger">2</span>
-        </a>
-    </li>
-    <li class="nav-item  ">
-        <a href="javascript:;" class="nav-link nav-toggle">
-            <i class="icon-diamond"></i>
-            <span class="title">UI Features</span>
-            <span class="arrow"></span>
-        </a>
-        <ul class="sub-menu">
-            <li class="nav-item  ">
-                <a href="ui_colors.html" class="nav-link ">
-                    <span class="title">Color Library</span>
-                </a>
-            </li>
-            <li class="nav-item  ">
-                <a href="ui_metronic_grid.html" class="nav-link ">
-                    <span class="title">Metronic Grid System</span>
-                </a>
-            </li>
-        </ul>
-    </li>
-    <ul class="sub-menu">
-        <li class="nav-item  ">
-            <a href="maps_google.html" class="nav-link ">
-                <span class="title">Google Maps</span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="maps_vector.html" class="nav-link ">
-                <span class="title">Vector Maps</span>
-            </a>
-        </li>
-    </ul>*@
                         </ul>
                     </div>
                 </div>
@@ -249,10 +162,17 @@
     @*<script src="../assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>*@
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL SCRIPTS -->
-    @Scripts.Render("~/bundles/base-ui-2")
+            @Scripts.Render("~/bundles/base-ui-2")
+            <script src="~/Scripts/Components-Plugins/gral_menu_accesos-1.0.js"></script>
     <!-- END THEME GLOBAL SCRIPTS -->
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     @RenderSection("scripts", required: false)
+<script type="text/javascript"> 
+    $(document).ready(function () {
+        $("#sidebar-menu").gral_menu_accesos();
+    });
+    
+</script>
     <!-- END PAGE LEVEL SCRIPTS -->
     <!-- BEGIN THEME LAYOUT SCRIPTS -->
     @Scripts.Render("~/bundles/base-ui-3")

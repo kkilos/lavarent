@@ -32,21 +32,112 @@
     <script src=@Url.Content("~/ViewsScripts/OrdenesRentas/OrdenesRentas.1.0.0.js")></script>
 }
 
-        <div class="portlet light bordered ">
-            <!-- PROJECT HEAD -->
-            <div class="portlet-title">
-                <div class="caption">
-                    <b>Ordenes de Rentas</b>   
-                </div>
-                <div class="actions">
-                    <div id="DatePickerSeleccionDias"></div>
-                </div>
-            </div>
-            <!-- end PROJECT HEAD -->
-            <div class="portlet-body">
-                <div id="seleccion_dias"></div>
-                <hr />
-                <div id="ToDoRentas"></div>
-            </div>
-        </div>
    
+<h1 class="page-title">Ordenes de Renta</h1>
+
+<div class="tabbable-custom ">
+    <ul class="nav nav-tabs  ">
+        <li class="active">
+            <a id="a1" href="#tab_5_1" data-toggle="tab" aria-expanded="true"> Asignación a Clientes de: Repartidores - Equipo (Salidas) </a>
+        </li>
+        <li class="">
+            <a id="a2" href="#tab_5_2" data-toggle="tab" aria-expanded="false"> Citas de Recepción </a>
+        </li>
+        <li class="">
+            <a id="a3" href="#tab_5_3" data-toggle="tab" aria-expanded="false"> Satisfacción del Cliente </a>
+        </li>
+        <li class="">
+            <a id="a4" href="#tab_5_4"  data-toggle="tab" aria-expanded="false"> Recepción de Equipos  </a>
+        </li>
+        <li class="">
+            <a id="a5" href="#tab_5_5" data-toggle="tab" aria-expanded="false"> Recepción de Pagos Renta </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_5_1">
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div class="portlet light bordered ">
+                        <!-- PROJECT HEAD -->
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <b>Ordenes de Rentas</b>
+                            </div>
+                            <div class="actions">
+                                <div id="DatePickerSeleccionDias"></div>
+                            </div>
+                        </div>
+                        <!-- end PROJECT HEAD -->
+                        <div class="portlet-body">
+                            <div id="seleccion_dias"></div>
+                            <hr />
+                            <div id="ToDoRentas"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>e.	Asignación de entrega y recepción de equipo, logística para plan de trabajo del día, desde un día antes y el mismo día se definen las tareas que realizaran los repartidores:
+            <br><br>i.	Entregas
+            <br>1.	Fecha y hora de cita de entrega de equipo
+            <br>2.	Características del equipo solicitado
+            <br>3.	Información del cliente
+            <br>4.	Asignación del número de equipo (validando que está disponible)
+            <br>5.	Asignación del empleado repartidor que entregará el equipo (validando que no tenga cita previa en esa fecha –hora)
+            <br><br>ii.	Recepciones
+            <br>1.	Fecha y hora de cita de recepción de equipo
+            <br>2.	Número de equipo (incluye información de características del equipo)
+            <br>3.	Asignación del empleado repartidor que recogerá el equipo (validando que no tenga cita previa en esa fecha –hora)
+
+        </div>
+        <div class="tab-pane" id="tab_5_2">
+            <div>
+                <br>a. Citas de recepción, es decir, regreso del
+                equipo, consiste en una llamada al cliente para ofrecerle más tiempo de
+                servicio o confirmar la cita para recoger el equipo.
+
+                <br>i. Reporte de equipo próximo a vencer, incluye los  datos de la renta, equipo y cliente
+
+
+                <br>1. Valida que el equipo no este programado para las
+                fechas seleccionadas
+
+                <br>2. Calcula la tarifa de la renta
+
+                <br>3. Fecha y hora para recoger la renta del
+                equipo,&nbsp; se valida que no hay cita previa
+                en esa fecha y hora de citas de entregas o de recepciones, hasta para los
+                repartidores vigentes para el día
+
+                 <br>iii. Si el cliente decide no refrendar, fecha y hora
+                    de la cita de recepción del equipo, se
+                    valida que no hay cita previa en esa fecha y hora de citas de entregas o de recepciones,
+                    hasta para los repartidores vigentes para el día
+
+            </div>
+
+        </div>
+        <div class="tab-pane" id="tab_5_3">
+            <br>g.	Seguimiento Satisfacción del Cliente, para mejor atención llamar al cliente una vez que se haya entregado o recibido el equipo:
+            <br>i.	Reporte de Equipos entregados y recibidos, con información del cliente, nombre y teléfonos
+            <br>ii.	Confirmación de entrega de equipo
+            <br>iii.	Calificación del 1 al 10
+            <br>iv.	Comentarios
+
+        </div>
+        <div class="tab-pane" id="tab_5_4">
+            <br>i.	Recepción de equipo en bodega
+            <br>i.	Indicar número de equipo
+            <br>ii.	Fecha y hora de regreso del equipo a bodega
+            <br>iii.	Cambio de estatus a: en reparación y disponible
+
+        </div>
+        <div class="tab-pane" id="tab_5_5">
+            <br>h.	Recepción de pago de rentas
+            <br>i.	Número de Orden de Renta
+            <br>ii.	Pago que realizo el cliente (en caso de que el pago sea menos de lo que se había establecido, el resto del pago lo deberá cubrir el repartidor en su nomina )
+
+        </div>
+    </div>
+</div>

@@ -7,7 +7,7 @@ using OurSDK.Helpers;
 
 namespace Lavarent.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class UsuariosController : Controller
     {
         // Vista de Usuarios
@@ -103,7 +103,18 @@ namespace Lavarent.Controllers
         }
 
 
+        [HttpPost]
+        public JsonResult ObtMenu()
+        {
+            JsonResult result = new JsonResult();
+            claseDB oDB = new claseDB();
+            oDB.Procedure = "usrs_p_obt_menu";
+            oDB.AddParameter("_guid_usuario", User.Identity.Name.ToString());
+            result = Json(oDB.ExecuteProcedureDataList());
+            oDB.Dispose();
+            return result;
 
+        }
 
         [HttpPost]
         public JsonResult NuevoUsuario(

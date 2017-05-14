@@ -132,36 +132,76 @@
            
         },
         idBtnNuevo: "btnNuevo",
-        idModalNuevo: "myModalNuevo",
+        idModalNuevo: "ModalClienteNuevo",
         fnLimpiaCamposNuevo: function () {
 
-            $("#btnNuevo").on('click', function () {
+            $("#btnClienteNuevo").on('click', function () {
                 limpiarCampos();                
-                $('#myModalNuevo').modal('hide');
+                $('#ModalClienteNuevo').modal('hide');
                 $("#datos_membresia").trigger("click");
 
+                $.ajax({
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    type: 'POST',
+                    url: '../MembresiasClientes/ActClienteNuevo',
+                    data: '{"nombre_completo":"' + $("#nombre_completo_nuevo").val() + '"}',
+                    success: function (oJson) {
+                        $.each(oJson, function (i, value) {
+
+                            $('#clnt-id').val(value.id_cliente);
+                            $("#clnt-miembro_desde").val(value.miembro_desde);
+                            $("#clnt-nombre_completo").val(value.nombre_completo);
+                            $("#clnt-direccion").val(value.direccion);
+                            $("#clnt-ubicacion").val(value.datos_ubicacion);
+                            $("#clnt-latitud").val(value.latitud);
+                            $("#clnt-longitud").val(value.longitud);
+                            $("#clnt-telefono_casa").val(value.tel_casa);
+                            $("#clnt-telefono_celular").val(value.tel_cel);
+                            if (value.id_colonia != undefined) {
+                                $("#clnt-colonia").val(value.colonia);
+                                $("#clnt-id_colonia").val(value.id_colonia);
+                                $("#clnt-zona").val(value.zona);
+                                $("#clnt-id_zona").val(value.id_zona);
+                            } else {
+                                $("#clnt-colonia").val('');
+                                $("#clnt-id_colonia").val('');
+                                $("#clnt-zona").val('');
+                                $("#clnt-id_zona").val('');
+                            }
+
+                            $('#clnt-ref1-nombre_completo').val(value.referencia_1_nombre);
+                            $('#clnt-ref1-tel').val(value.referencia_1_telefono);
+                            $('#clnt-ref2-nombre_completo').val(value.referencia_2_nombre);
+                            $('#clnt-ref2-tel').val(value.referencia_2_telefono);
+                            $('#clnt-observaciones').data("wysihtml5").editor.setValue(value.observaciones);
+
+                            $('#clnt-identificacion_imagen').attr("src", "../MembresiasClientes/ObtClienteIdentificacion?id_cliente=" + value.id_cliente);
+                            $('#clnt-identificacion_fotografia-calidad').val(value.identificacion_id_estatus_imagen);
+                            $('#clnt-identificacion_fotografia-fecha').val(value.identificacion_fecha_hora_mod);
+                            $('#clnt-comprobante_imagen').attr("src", "../MembresiasClientes/ObtClienteComprobante?id_cliente=" + value.id_cliente);
+                            $('#clnt-comprobante_domicilio-calidad').val(value.comprobante_id_estatus_imagen);
+                            $('#clnt-comprobante_domicilio-fecha').val(value.comprobante_fecha_hora_mod);
+
+
+                            cargaHistorialRentas(value.id_cliente);
+
+                        });
+                        $("#datos_membresia").trigger("click");
+
+                    }
+                });
 
             });
         },
-        idBtnGuardarNuevo: 'id_btn_nuevo' //,
-        //AjaxNuevo: "../Usuarios/NuevoUsuario",
-        //parametrosNuevo: function () {
-        //    var parametros = '{' +
-        //    '"nombre":"' + $("#id_nombre_nuevo").val() + '",' +
-        //    '"usuario":"' + $("#id_usuario_nuevo").val() + '",' +
-        //    '"contrasenia":"' + $("#id_contrasenia_nuevo").val() + '",' +
-        //    '"id_rol":"' + oRol.fnObtRol() + '",' +
-        //    '"comentario":"' + $("#id_comentario_nuevo").val() + '"' +
-        //    '}';
-        //    return parametros;
-        //}
+        idBtnGuardarNuevo: 'id_btn_nuevo' 
     });
 
     var limpiarCampos = function () {
         cargaHistorialRentas(0);
         $('#clnt-id').val('Creando Nuevo Usuario')
         $("#clnt-miembro_desde").val('');
-        $("#clnt-nombre_completo").val($("#id_nombre_nuevo").val());
+        $("#clnt-nombre_completo").val('');
         $("#clnt-direccion").val('');
         $("#clnt-ubicacion").val('');
         $("#clnt-latitud").val('');
@@ -368,6 +408,7 @@
             });
         } else
         {
+            
             map.addMarker({
                 lat: $("#clnt-latitud").val(),
                 lng: $("#clnt-longitud").val()
@@ -378,6 +419,41 @@
     });
 
 
+   // FormRepeater.init();
     
 
 });
+
+var FormRepeater = function () {
+
+    return {
+        //main function to initiate the module
+        init: function () {
+            $('.mt-repeater').each(function () {
+                $(this).repeater({
+                    show: function () {
+                        $(this).slideDown();
+                        $('.date-picker').datepicker({
+                            rtl: App.isRTL(),
+                            orientation: "left",
+                            autoclose: true
+                        });
+                    },
+
+                    hide: function (deleteElement) {
+                        if (confirm('Are you sure you want to delete this element?')) {
+                            $(this).slideUp(deleteElement);
+                        }
+                    },
+
+                    ready: function (setIndexes) {
+
+                    }
+
+                });
+            });
+        }
+
+    };
+
+}();

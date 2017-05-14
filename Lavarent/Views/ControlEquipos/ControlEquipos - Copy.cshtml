@@ -1,0 +1,189 @@
+﻿@{
+    ViewBag.Title = "ControlEquipos";
+    Layout = "~/Views/Shared/LayoutBase.cshtml";
+}
+@section styles{
+    @*  @Styles.Render("~/Content/dataTables")*@
+    @Styles.Render("~/Content/summernote")
+}
+@section plugins{
+    @Scripts.Render("~/bundles/dataTables")
+    @Scripts.Render("~/bundles/summernote")
+}
+@section scripts{
+    <script src="~/Scripts/Plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script src=@Url.Content("~/Scripts/Components-Plugins/gral_selector_simple_rol.js")></script>
+    <script src=@Url.Content("~/Scripts/Components-Plugins/tabla-generica-1.0.8.js")></script>
+    <script src="@Url.Content("~/ViewsScripts/ControlEquipos/ControlEquipos.js")"></script>
+}
+
+<h1 class="page-title">Control de Equipos</h1>
+
+
+<div class="tabbable-custom ">
+    <ul class="nav nav-tabs  ">
+        <li class="active">
+            <a id="busqueda_equipo" class="ValidaEquipo" href="#tab_5_1" data-toggle="tab" aria-expanded="true"> Búsqueda de Equipo </a>
+        </li>
+        <li class="">
+            <a id="datos_equipo" class="ValidaEquipo" href="#tab_5_2" data-toggle="tab" aria-expanded="false" > Datos del Equipo </a>
+        </li>
+        <li class="">
+            <a id="historial_servicio_equipo" class="ValidaEquipo" href="#tab_5_3" data-toggle="tab" aria-expanded="false"> Historial de Ordenes de Servicio </a>
+        </li>
+        <li class="">
+            <a id="historial_rentas_equipo" class="ValidaEquipo" href="#tab_5_3" data-toggle="tab" aria-expanded="false"> Historial de Rentas </a>
+        </li>
+        <li class="">
+            <a id="mapa_equipo" href="#tab_5_4" class="ValidaEquipo" data-toggle="tab" aria-expanded="false"> Ubicación Actual (Mapa) </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_5_1">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="portlet box oficial blue-chambray">
+                        <div class="portlet-title">
+                            <div class="caption font-white">
+                                <h4><i class="icon-user-following font-white font-lg" style="padding-right:10px"></i>Listado de Equipos</h4>
+                            </div>
+                            <div class="actions"></div>
+                            <div class="tools"></div>
+                        </div>
+                        <div class="portlet-body">
+                            <table id="dtEquipos" class="table table-striped table-bordered table-hover order-column"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_5_2">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="portlet  portlet-fit full-height-content full-height-content-scrollable bordered    box oficial blue-chambray">
+                        <div class="portlet-title">
+                            <div class="caption font-white">
+                                <h4><i class="icon-user-following font-white font-lg" style="padding-right:10px"></i>Datos del Equipo</h4>
+                            </div>
+                            <div class="actions"></div>
+                            <div class="tools"></div>
+                        </div>
+                        <div class="portlet-body form">
+                            <div class="horizontal-form">
+                                <div class="full-height-content-body">
+                                    <div class="form-body">
+                                        <!--Información General -->
+                                        <div>
+                                            <h3 class="form-section">Información del Equipo</h3>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Número del Equipo</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="icon-screen-tablet font-yellow"></i>
+                                                            </span>
+                                                            <input id="eqp-id" type="text" class="form-control" placeholder="Nuevo Equipo" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Fecha de Compra</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="icon-calendar font-yellow"></i>
+                                                            </span>
+                                                            <input id="eqp-fecha_compra" type="text" class="form-control" placeholder="Nuevo Equipo" readonly>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                </div>
+                                                <div class="col-md-3">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Tipo de Equipo</label>                                                      
+                                                        <div class="input-group">
+                                                            <select id="eqp-tipo_equipo" class="bs-select form-control" data-width="100%">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Capacidad de Equipo</label>
+                                                    <div class="input-group">
+                                                        <select id="eqp-capacidad" class="bs-select form-control" data-width="100%"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Observaciones -->
+                                        <h3 class="form-section">Observaciones</h3>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div id="clnt-observaciones"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn blue">Guardar</button>
+                                    <button type="button" class="btn default">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_5_3">
+            <p> Howdy, I'm in Section 3. </p>
+            <p>
+                Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel
+                eum iriure dolor in hendrerit in vulputate velit esse molestie consequat
+            </p>
+            <p>
+                <a class="btn yellow" href="#tab_5_1" target="_self"> Activate this tab via URL </a>
+            </p>
+        </div>
+        <div class="tab-pane" id="tab_5_4">
+            <p> Howdy, I'm in Section 3. </p>
+            <p>
+                Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel
+                eum iriure dolor in hendrerit in vulputate velit esse molestie consequat
+            </p>
+            <p>
+
+                <button id="test" class="btn yellow"> Activate this tab via URL </button>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div id="stack2" class="modal fade" tabindex="-1" data-focus-on="input:first">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Stack Two</h4>
+    </div>
+    <div class="modal-body">
+        <p> One fine body… </p>
+        <p> One fine body… </p>
+        <div class="form-group">
+            <input class="form-control" type="text" data-tabindex="1">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" data-tabindex="2">
+        </div>
+        <button class="btn blue" data-toggle="modal" href="#stack3">Launch modal</button>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-outline dark">Close</button>
+        <button type="button" class="btn red">Ok</button>
+    </div>
+</div>

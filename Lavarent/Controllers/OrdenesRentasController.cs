@@ -7,7 +7,7 @@ using OurSDK.Helpers;
 
 namespace Lavarent.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class OrdenesRentasController : Controller
     {
         // GET: OrdenesRentas

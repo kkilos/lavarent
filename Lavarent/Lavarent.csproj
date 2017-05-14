@@ -296,6 +296,7 @@
     <Content Include="Content\DataTables\media\images\sort_both.png" />
     <Content Include="Content\DataTables\media\images\sort_desc.png" />
     <Content Include="Content\DataTables\media\images\sort_desc_disabled.png" />
+    <Content Include="Content\img\1f3c6.png" />
     <Content Include="Content\img\accordion-plusminus.png" />
     <Content Include="Content\img\ajax-loading.gif" />
     <Content Include="Content\img\ajax-modal-loading.gif" />
@@ -321,6 +322,7 @@
     <Content Include="Content\img\remove-icon-small.png" />
     <Content Include="Content\img\syncfusion-icons-white.png" />
     <Content Include="Content\img\syncfusion-icons.png" />
+    <Content Include="Content\img\Yoda_Attack_of_the_Clones.jpg" />
     <Content Include="Content\Metronic\layout\css\custom.css" />
     <Content Include="Content\Metronic\layout\css\custom.min.css" />
     <Content Include="Content\Metronic\layout\css\layout.css" />
@@ -454,6 +456,47 @@
     <Content Include="Content\sweetalert\docs.css" />
     <Content Include="Content\sweetalert\sweet-alert.css" />
     <Content Include="Content\sweetalert\thumbs-up.jpg" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -500,6 +543,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Scripts\Components-Plugins\cteq_selector_tipo_equipos.js" />
+    <Content Include="Scripts\Components-Plugins\gral_info_usuario_logeado.js" />
     <Content Include="Scripts\Components-Plugins\gral_menu_accesos-1.0.js" />
     <Content Include="Scripts\Components-Plugins\gral_selector_simple_rol.js" />
     <Content Include="Scripts\Components-Plugins\tabla-generica-1.0.8.js" />
@@ -607,6 +651,8 @@
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.backstretch.js" />
     <Content Include="Scripts\jquery.backstretch.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -659,6 +705,8 @@
     <Content Include="Scripts\Plugins\jquery-inputmask\inputmask\inputmask.regex.extensions.min.js" />
     <Content Include="Scripts\Plugins\jquery-inputmask\inputmask\jquery.inputmask.min.js" />
     <Content Include="Scripts\Plugins\jquery-inputmask\jquery.inputmask.bundle.min.js" />
+    <Content Include="Scripts\Plugins\jquery-repeater\jquery.repeater.js" />
+    <Content Include="Scripts\Plugins\jquery-repeater\jquery.repeater.min.js" />
     <Content Include="Scripts\Plugins\jquery-slimscroll\jquery.slimscroll.js" />
     <Content Include="Scripts\Plugins\jquery-slimscroll\jquery.slimscroll.min.js" />
     <Content Include="Scripts\Plugins\jquery.blockui.min.js" />
@@ -666,6 +714,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="ViewsScripts\ControlEquipos\ControlEquipos - Copy.js" />
     <Content Include="ViewsScripts\ControlEquipos\ControlEquipos.js" />
     <Content Include="ViewsScripts\MembresiasClientes\Index.old.js" />
     <Content Include="ViewsScripts\MembresiasClientes\Index.1.0.3.js" />
@@ -706,6 +755,7 @@
     <Content Include="Views\OrdenesRentas\OrdenesRentas - Copy.cshtml" />
     <Content Include="Views\Sweet\Alert.cshtml" />
     <Content Include="Views\MembresiasClientes\MembresiasClientes - Copy.cshtml" />
+    <Content Include="Views\ControlEquipos\ControlEquipos - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
